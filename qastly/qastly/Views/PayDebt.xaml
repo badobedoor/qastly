@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage  x:Class="qastly.Views.PayDebt"
+                xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+                xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                xmlns:vm="clr-namespace:qastly.ViewModels"
+                x:Name="Page">
+    <ContentPage.BindingContext>
+        <vm:MainViewModel/>
+    </ContentPage.BindingContext>
+
+    <!--  You can set an animation in the xaml file or in the csharp code behind  -->
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation DurationIn="400" DurationOut="300"  EasingIn="SinOut" EasingOut="SinIn" HasBackgroundAnimation="True" PositionIn="Center" PositionOut="Center" ScaleIn="1.2" ScaleOut="0.8" />
+    </pages:PopupPage.Animation>
+
+    <!--  You can use any elements here which are extended from Xamarin.Forms.View  -->
+    <Frame CornerRadius="15" Margin="12" Padding="24" BackgroundColor="White" HorizontalOptions="Center" VerticalOptions="Center">
+
+        <StackLayout  HorizontalOptions="Center" VerticalOptions="Center">
+
+            <!--#region Picker Content-->
+            <DatePicker IsVisible="False" x:Name="DateePicker"  HorizontalOptions="Center" TextColor="White" BackgroundColor="#3D72FF" DateSelected="DatePicker_DateSelected" />
+            <!--#endregion-->
+
+
+            <!--#region Heder Titel-->
+            <Label Style="{StaticResource Smalllable}" FontFamily="{StaticResource lightfont}"  Text="دفع دين " FontSize="17" TextColor="#3B3B3B" Margin="0,0,0,0"/>
+            <BoxView Style="{StaticResource lineBoxView}" HorizontalOptions="Center" WidthRequest="75"  HeightRequest="2" Color="#3B3B3B" Margin="0,0,0,15"/>
+            <!--#endregion-->
+
+
+            <!--#region Entry Content-->
+
+            <StackLayout>
+                <Label Text="المبلغ" HorizontalOptions="End" />
+                <Entry FontSize="20" Keyboard="Telephone"  Text="{Binding Debt_amount ,Mode=TwoWay}" />
+            </StackLayout>
+
+            <StackLayout >
+                <Label Text="ملاحظات" HorizontalOptions="End"/>
+                <Editor  HeightRequest="100"  Text="{Binding Debt_Notes ,Mode=TwoWay}" />
+            </StackLayout>
+            <!--#endregion-->
+
+            <!--#region Btn Content-->            
+            <Button x:Name="DateePickerbtn" Style="{StaticResource mediumButton}"   HorizontalOptions="FillAndExpand"  Margin="0,20,0,0" Text="{Binding Debt_Date_pickerBtn,StringFormat='{0:yyyy/MM/dd}',Mode=TwoWay}" FontSize="18" Clicked="DateePickerbtn_Clicked" />
+            <Button Style="{StaticResource mediumButton}"   HorizontalOptions="FillAndExpand"  Margin="0,20,0,0" Text="إنشاء" FontSize="18" Command="{Binding Pay_DebtComand}"/>
+            <!--#endregion-->
+        </StackLayout>
+    </Frame>
+
+</pages:PopupPage>

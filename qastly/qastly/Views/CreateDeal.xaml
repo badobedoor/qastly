@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:vm="clr-namespace:qastly.ViewModels"
+             NavigationPage.HasNavigationBar="False"
+             mc:Ignorable="d"
+             x:Class="qastly.Views.CreateDeal"
+             x:Name="Page">
+    <ContentPage.BindingContext>
+        <vm:MainViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <!--#region general stacklayout-->
+        <StackLayout Spacing="0" >
+            <!--#region Content stacklayout-->
+            <StackLayout Spacing="0" VerticalOptions="Start" >
+                <!--#region nav bar -->
+                <StackLayout Style="{StaticResource HeaderStackLayout}" Spacing="0" Padding="0" Margin="0,0,0,2">
+                    <Button Style="{StaticResource FA.solid.ButtonStyle}" Text="{StaticResource  Search}" HorizontalOptions="StartAndExpand"  FontSize="23" Margin="5,0,15,0"  Command="{Binding Nav_To_costomares_Command}"/>
+                    <Button Style="{StaticResource FA.solid.ButtonStyle}" Text="{StaticResource  arrowleft}" HorizontalOptions="End"  FontSize="23" Margin="0,0,15,0"  Command="{Binding Nav_To_InquiryPage_Command}" Rotation="180"/>
+                </StackLayout>
+                <!--#endregion-->
+
+                <!--#region heder lable -->
+                <Label Style="{StaticResource Smalllable}" FontFamily="{StaticResource lightfont}" Text="قسـطـلى"  FontSize="45" Margin="0,0,0,10" TextColor="#3B3B3B"/>
+                <BoxView Style="{StaticResource lineBoxView}" HorizontalOptions="Center" WidthRequest="78"  HeightRequest="2" Color="#3B3B3B" Margin="0,-15,0,0"/>
+                <Label Style="{StaticResource Smalllable}" FontFamily="{StaticResource lightfont}"  Text="إنشاء صفقة" FontSize="17" TextColor="#3B3B3B" Margin="0,0,0,0"/>
+                <!--#endregion-->
+
+ 
+                <!--#region Entry Content  -->
+                <ScrollView>
+                    
+                    <StackLayout Margin="0,20,0,0" Spacing="0" VerticalOptions="Center">
+
+
+                        <!--#region بينات القسط-->
+                        
+                        <Label Text="بينات المنتج " FontFamily="{StaticResource lightfont}" FontSize="16" HorizontalOptions="EndAndExpand" Margin="0,10,10,10"/>
+                        <!--product Name-->
+                        <inputLayout:SfTextInputLayout  Hint=" أسم المنتج"  ContainerType="None" FocusedColor="#616161" UnfocusedColor="#616161"  Margin="30,0,25,10" FlowDirection="RightToLeft" >
+                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                <inputLayout:LabelStyle FontSize="16" FontFamily="{StaticResource Key=RegularFont}" />
+                            </inputLayout:SfTextInputLayout.HintLabelStyle>
+
+                            <Entry TextColor="#000" Text="{Binding VM_Creat_Deal_Prodect_Name, Mode=TwoWay}"/>
+
+                        </inputLayout:SfTextInputLayout>
+
+                        <!--Costomar product Price -->
+                        <inputLayout:SfTextInputLayout  Hint=" ثمن المنتج"   ContainerType="None"  FocusedColor="#616161" UnfocusedColor="#616161"  Margin="30,0,25,10" FlowDirection="RightToLeft" >
+                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                <inputLayout:LabelStyle FontSize="16" FontFamily="{StaticResource Key=RegularFont}"/>
+                            </inputLayout:SfTextInputLayout.HintLabelStyle>
+
+                            <Entry x:Name="price_Entry"  IsReadOnly="True" TextColor="#000" Text="{Binding VM_Creat_Deal_price}" Keyboard="Numeric"/>
+
+                        </inputLayout:SfTextInputLayout>
+
+                        <!--Costomar Advance Amount-->
+                        <inputLayout:SfTextInputLayout  Hint=" المقدم"   ContainerType="None"  FocusedColor="#616161" UnfocusedColor="#616161"  Margin="30,0,25,10" FlowDirection="RightToLeft" >
+                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                <inputLayout:LabelStyle FontSize="16" FontFamily="{StaticResource Key=RegularFont}"/>
+                            </inputLayout:SfTextInputLayout.HintLabelStyle>
+
+                            <Entry x:Name="given_Entry" IsReadOnly="True" TextColor="#000" Text="{Binding VM_Creat_Deal_given}" Keyboard="Numeric"/>
+
+                        </inputLayout:SfTextInputLayout>
+
+                        <!--Costomar installment-->
+                        <inputLayout:SfTextInputLayout  Hint=" القسط"  ContainerType="None"  FocusedColor="#616161" UnfocusedColor="#616161"  Margin="30,0,25,10" FlowDirection="RightToLeft" >
+                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                <inputLayout:LabelStyle FontSize="16" FontFamily="{StaticResource Key=RegularFont}"/>
+                            </inputLayout:SfTextInputLayout.HintLabelStyle>
+
+                            <Entry x:Name="qast_Entry" IsReadOnly="True" TextColor="#000" Text="{Binding VM_Creat_Deal_qast}" Keyboard="Numeric"/>
+
+                        </inputLayout:SfTextInputLayout>
+
+                        <!--Costomar Monthly Num-->
+                        <inputLayout:SfTextInputLayout  Hint=" عدد شهور القسط "  ContainerType="None" FocusedColor="#616161" UnfocusedColor="#616161"  Margin="30,0,25,10" FlowDirection="RightToLeft" >
+                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                <inputLayout:LabelStyle FontSize="16" FontFamily="{StaticResource Key=RegularFont}"/>
+                            </inputLayout:SfTextInputLayout.HintLabelStyle>
+
+                            <Entry x:Name="selcet_month_Entry" IsReadOnly="True" TextColor="#000" Text="{Binding VM_Creat_Deal_selcet_month}" Keyboard="Numeric"/>
+
+                        </inputLayout:SfTextInputLayout>
+
+
+                        <!--تاريخ بداية التعاقد-->
+                        <Frame Margin="20,0,20,20" BorderColor="#ddd" CornerRadius="10" >
+                            <StackLayout Padding="5" Orientation="Horizontal" >
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="DateePickerbtn_Clicked"   />
+                                </StackLayout.GestureRecognizers>
+
+                                <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="End" >
+                                    <Label Style="{StaticResource FA.solid.ButtonStyle}" Text="{StaticResource  arrowdown}" TextColor="#000" HorizontalOptions="Start" VerticalOptions="End" FontSize="23"   />
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="End">
+                                    <Label Text="تاريخ بداية التعاقد" HorizontalOptions="End"/>
+                                    <Label x:Name="DateePickerbtn"  TextColor="#000"  HorizontalOptions="End"  Margin="0,0,0,0" Text="{Binding VM_Creat_Deal_Start_Date,StringFormat='{0:yyyy/MM/dd}',Mode=TwoWay}" FontSize="18"  />
+                                    <DatePicker IsVisible="False" x:Name="DateePicker"  HorizontalOptions="Center" TextColor="White" BackgroundColor="#3D72FF" DateSelected="DatePicker_DateSelected" />
+                                </StackLayout>
+                                
+                            </StackLayout>
+                        </Frame>
+
+
+                        <!--يوم استحقاق القسط -->
+                        <Frame Margin="20,0,20,0" BorderColor="#ddd" CornerRadius="10" >
+                            <StackLayout Padding="5" Orientation="Horizontal" >
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="DayDatePickerbtn_Clicked"   />
+                                </StackLayout.GestureRecognizers>
+
+                                <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="End" >
+                                    <Label Style="{StaticResource FA.solid.ButtonStyle}" Text="{StaticResource  arrowdown}" TextColor="#000" HorizontalOptions="Start" VerticalOptions="End" FontSize="23"   />
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="End">
+                                    <Label Text="يوم استحقاق القسط  " HorizontalOptions="End"/>
+                                    <Label x:Name="Day_DatePickerbtn" Text="{Binding VM_Creat_Deal_paymentDay,Mode=TwoWay}"  TextColor="#000"  HorizontalOptions="End"  Margin="0,0,0,0" FontSize="18"  />
+                                    <Picker IsVisible="False" x:Name="DayDatePicker"  HorizontalOptions="Center" TextColor="White" BackgroundColor="#3D72FF" SelectedIndexChanged="DayDatePicker_SelectedIndexChanged" />
+                                </StackLayout>
+
+                            </StackLayout>
+                        </Frame>
+
+                        <!--#endregion-->
+
+                        <!--#region بينات العميل-->
+                        <Label Text="بينات العميل " FontFamily="{StaticResource lightfont}" FontSize="16" HorizontalOptions="EndAndExpand" Margin="0,10,10,10"/>
+                        
+                            
+                            <Frame Margin="20,0,20,0" BorderColor="#ddd" CornerRadius="10" >
+                                <StackLayout Padding="5" Orientation="Horizontal" >
+                                    <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer  Command="{Binding Path=BindingContext.Nav_To_CostomarSearch_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                                </StackLayout.GestureRecognizers>
+
+                                    <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="End" >
+                                        <Label Style="{StaticResource FA.solid.ButtonStyle}" Text="{StaticResource  arrowdown}" TextColor="#000" HorizontalOptions="Start" VerticalOptions="End" FontSize="23"   />
+                                    </StackLayout>
+                                    <StackLayout HorizontalOptions="End">
+                                    <Label Text="أختر عميل  " HorizontalOptions="End"/>
+                                    <Label Text="{Binding VM_Creat_Deal_ItemData_costomar_Name}" TextColor="#000"  HorizontalOptions="End"  Margin="0,0,0,0" FontSize="18"  />
+                                </StackLayout>
+
+                                </StackLayout>
+                            </Frame>
+
+                        
+                        <!--#region بينات الدفع-->
+                        <Label Text="بينات الدفع " FontFamily="{StaticResource lightfont}" FontSize="16" HorizontalOptions="EndAndExpand" Margin="0,10,10,10"/>
+                        
+                        
+                        <Frame Margin="20,0,20,20" BorderColor="#3D72FF" CornerRadius="10" Padding="0" >
+                            <StackLayout Spacing="0"  Orientation="Horizontal" HeightRequest="45">
+                                <Label x:Name="Debt_lable" TextColor="#3D72FF" Text="دين" HeightRequest="45" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" >
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Debt_lable_Clicked"   />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                                <Label x:Name="cash_lable" TextColor="#fff" BackgroundColor="#3D72FF" Text="كاش" HeightRequest="45" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="cash_lable_Clicked"   />
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+                            </StackLayout>
+                        </Frame>
+
+                        <Button x:Name="Fundspickerbtn" Style="{StaticResource mediumButton}" HorizontalOptions="End" WidthRequest="150"  Padding="0" Margin="0,10,20,0" Text="{Binding FundsItemSlect,Mode=TwoWay}" FontSize="18" Clicked="Fundspickerbtn_Clicked" />
+                        <Picker IsVisible="False" x:Name="Fundspicker"  Title="أختر الحساب"  ItemsSource="{Binding Funds}" SelectedIndexChanged="Fundspicker_SelectedIndexChanged"  ItemDisplayBinding="{Binding name}" />
+                        <!--Costomar  أسم الدائن-->
+                        <StackLayout x:Name="pic_Debt_Name" Orientation="Horizontal" Spacing="20"   IsVisible="False" Padding="20,0" >
+                            
+                            <Label x:Name="Add_Debt_Name" Style="{StaticResource WishlistIconLabel}" HorizontalOptions="End" Text="{StaticResource PlusIcon}" WidthRequest="40" HeightRequest="20" FontSize="30" Padding="0,10,0,0" BackgroundColor="Transparent">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer  Tapped="Add_Debt_Name_Clicked"   />
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <Button x:Name="ListdebtSum_picker_Btn"  Style="{StaticResource mediumButton}" HorizontalOptions="FillAndExpand"  Margin="0,10,0,0" Text="{Binding Debt_name_pickerBtn ,Mode=TwoWay}" FontSize="16" Clicked="ListdebtSum_picker_Btn_Clicked" />
+                            <Picker IsVisible="False" x:Name="ListdebtSum_picker"  Title="أختر الدائن"  ItemsSource="{Binding Listdebt_Sum}" SelectedIndexChanged="ListdebtSum_picker_SelectedIndexChanged"  ItemDisplayBinding="{Binding debtorName}" />
+                        </StackLayout>
+
+                        <StackLayout x:Name="Debt_Name" Margin="20,-10,20,10" IsVisible="False">
+                            <Label Text="أسم الدائن " HorizontalOptions="End" />
+                            <StackLayout Orientation="Horizontal" Spacing="20"  >
+                                <Label  Style="{StaticResource WishlistIconLabel}" HorizontalOptions="End" Text="{StaticResource minusIcon}" WidthRequest="40" HeightRequest="20" FontSize="30" Padding="0,10,0,0" BackgroundColor="Transparent">
+                                <Label.GestureRecognizers>
+                                        <TapGestureRecognizer  Tapped="pic_Debt_Name_Clicked" />
+                                </Label.GestureRecognizers>
+                            </Label>
+                                <Entry x:Name="new_Dept_name" Placeholder="من فضلك أدخل أسم الدائن" FontSize="16" Text="{Binding VM_Creat_Deal_new_Debt_Name ,Mode=TwoWay}" HorizontalOptions="FillAndExpand" />
+                            </StackLayout>
+                        </StackLayout>
+
+                        <!--#region بينات الجموعه-->
+
+                        <Label x:Name="Group_id_lable" Text="{Binding VM_Creat_Deal_group_id ,Mode=TwoWay}" IsVisible="False" />
+
+
+
+                        <!--<inputLayout:SfTextInputLayout x:Name="Debt_Name" IsVisible="False" Hint=" أسم الدائن "  ContainerType="None" FocusedColor="#616161" UnfocusedColor="#616161"  Margin="30,15,25,10" FlowDirection="RightToLeft" >
+                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                <inputLayout:LabelStyle FontSize="16" FontFamily="{StaticResource Key=RegularFont}"/>
+                            </inputLayout:SfTextInputLayout.HintLabelStyle>
+
+                            <Entry Placeholder="من فضلك أدخل أسم الدائن" TextColor="#000" />
+
+                        </inputLayout:SfTextInputLayout>-->
+                        <!--#endregion-->
+                        
+
+
+
+
+
+
+
+
+
+                    </StackLayout>
+                </ScrollView>
+
+                <!--#endregion-->
+
+
+
+            </StackLayout>
+            <!--#endregion-->
+
+            <!--#region Foter -->
+
+            <StackLayout VerticalOptions="Center"></StackLayout>
+            <Button Grid.Row="2" x:Name="CheckoutBtn" Style="{StaticResource bigButton}"  FontFamily="{StaticResource lightfont}"  Text="إنشاء " FontSize="20" Margin="0,30,0,0"  BackgroundColor="#3D72FF" Command="{Binding Creat_Deal_command}"/>
+            
+
+            <!--#endregion-->
+
+        </StackLayout>
+        <!--#endregion-->
+    </ContentPage.Content>
+</ContentPage>

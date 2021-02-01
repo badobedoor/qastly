@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="qastly.Views.installment"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:vm="clr-namespace:qastly.ViewModels"             
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource PageBackGroundColor}"
+             x:Name="Page">
+    <ContentPage.Content>
+
+        <!--List_Deal_Data-->
+
+
+        <!--#region Content StackLayout  -->
+
+        <Grid Style="{StaticResource grid3Row}">
+            
+            <!--#region nav bar  -->
+            <StackLayout Grid.Row="0" Style="{StaticResource HeaderStackLayout}" Spacing="0" Padding="0" Margin="0,0,0,2">
+                <SearchBar x:Name="CostomarSearchBar"  Placeholder="أبحث هنا ............." PlaceholderColor="#ddd"  HorizontalOptions="StartAndExpand"  FontSize="23" Margin="0,0,0,0" TextColor="#fff" TextChanged="CostomarSearchBar_TextChanged" />
+                <!--<Button Style="{StaticResource FA.solid.ButtonStyle}" Text="{StaticResource  Search}" HorizontalOptions="StartAndExpand"  FontSize="23" Margin="5,0,15,0"  Command="{Binding Nav_To_Search_Command}"/>-->
+                <Label Style="{StaticResource Headerlable}" FontFamily="{StaticResource Regularfont}" Text="الأقساط"  HorizontalOptions="End" Margin="0,0,20,0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer  Command="{Binding Path=BindingContext.Dleate_All_installment_and_Deal_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                    </Label.GestureRecognizers>
+                </Label>
+                
+            </StackLayout>
+            <!--#endregion-->
+            
+            <!--#region list view -->
+
+            <ScrollView  Grid.Row="1" VerticalOptions="StartAndExpand" >
+                <!--Start list view-->
+                <StackLayout  Spacing="0" VerticalOptions="FillAndExpand" Margin="10"  >
+
+
+                    <ListView x:Name="Deal_Data_ListView" ItemsSource="{Binding List_Deal_Data}"  HasUnevenRows="true" VerticalOptions="FillAndExpand"  Margin="10"  >
+
+                        <ListView.ItemTemplate  >
+                            <DataTemplate>
+                                <ViewCell >
+                                    <Frame BorderColor="#DCD8D8"   Padding="0"  CornerRadius="10" Margin="0,0,0,10" >
+                                        <StackLayout VerticalOptions="StartAndExpand" Spacing="0">
+                                            <!--#region box Content -->
+                                            <StackLayout Style="{StaticResource contanerStackLayout}"  BackgroundColor="{Binding installmedntColor}" Spacing="0">
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer  Command="{Binding Path=BindingContext.show_installment_List_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                                                </StackLayout.GestureRecognizers>
+                                                <StackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand"  >
+                                                    <StackLayout Orientation="Horizontal" VerticalOptions="Fill">
+                                                        <StackLayout HorizontalOptions="StartAndExpand" WidthRequest="50" HeightRequest="80" VerticalOptions="Center" Margin="10,0,0,0">
+                                                            <Label Style="{StaticResource WishlistIconLabel}"  Text="{Binding  Worthy_amount,StringFormat='$ {0}'}"  HeightRequest="80"  BackgroundColor="#E7EDFF" TextColor="#3D72FF" FontSize="15" HorizontalTextAlignment="Center"/>
+                                                        </StackLayout>
+                                                        <StackLayout  Style="{StaticResource contanerStartStackLayout}" BackgroundColor="Transparent" VerticalOptions="Start" Margin="0,5,0,0" HorizontalOptions="End">
+                                                            <Label Style="{StaticResource  Boldlable}" TextColor="Black" Text="{Binding name}" FontSize="22" HorizontalOptions="End" FontFamily="{StaticResource lightfont}"/>
+                                                            <Label Style="{StaticResource listViewPriceLabel}" FontFamily="" Text="{Binding InstallmentDueDate,StringFormat='{0:yyyy/MM/dd}'}" TextColor="#374957" FontSize="18" HorizontalOptions="End"/>
+                                                        </StackLayout>
+                                                        <border:SfBorder HorizontalOptions="End" VerticalOptions="Center" BorderColor="Transparent" BorderWidth=".5"  HeightRequest="60" CornerRadius="30" BackgroundColor="#E7EDFF" WidthRequest="60" Margin="5,10,5,5" Padding="0"  >
+                                                            <Label Text="{Binding delay_Days}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="27" TextColor="#3D72FF" />
+                                                        </border:SfBorder>
+                                                    </StackLayout>
+
+                                                    <StackLayout VerticalOptions="Center"/>
+                                                    <StackLayout VerticalOptions="End" HorizontalOptions="Fill" Orientation="Horizontal"    Margin="10,0,10,10" >
+                                                        <Grid HorizontalOptions="CenterAndExpand" >
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="50"/>
+                                                            </Grid.RowDefinitions>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Frame Grid.Column="0" Grid.ColumnSpan="1" BackgroundColor="#F2F2F2" Padding="0,3,0,0" CornerRadius="5">
+                                                                <Label Style="{StaticResource WishlistIconLabel}" Margin="0" VerticalOptions="Center"  BackgroundColor="Transparent" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" WidthRequest="90" Rotation="90" Text="{StaticResource phone}"  >
+                                                                    <Label.GestureRecognizers>
+                                                                        <TapGestureRecognizer  Command="{Binding Path=BindingContext.phone_call_installment_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                                                                    </Label.GestureRecognizers>
+                                                                </Label>
+                                                            </Frame>
+                                                            <Frame   Grid.Column="1" Grid.ColumnSpan="1" BackgroundColor="#F2F2F2" Padding="0,3,0,0" CornerRadius="5">
+                                                                <Label Style="{StaticResource WishlistIconLabel}" Margin="0" VerticalOptions="Center" BackgroundColor="Transparent" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" WidthRequest="90" Text="{StaticResource msg}" >
+                                                                    <Label.GestureRecognizers>
+                                                                        <TapGestureRecognizer  Command="{Binding Path=BindingContext.Send_msg_installment_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                                                                    </Label.GestureRecognizers>
+                                                                </Label>
+                                                            </Frame>
+
+                                                            <Frame   Grid.Column="2" Grid.ColumnSpan="2" BackgroundColor="#F2F2F2" Padding="0,3,0,0" CornerRadius="5">
+                                                                <Label Style="{StaticResource WishlistIconLabel}" Margin="0" VerticalOptions="Center" BackgroundColor="Transparent" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" WidthRequest="90"  Text="دفع القسط" >
+                                                                    <Label.GestureRecognizers>
+                                                                        <TapGestureRecognizer  Command="{Binding Path=BindingContext.Nav_PayInstalment_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                                                                    </Label.GestureRecognizers>
+                                                                </Label>
+                                                            </Frame>
+                                                            <!--<Button Grid.Column="2" Grid.ColumnSpan="2"  HorizontalOptions="FillAndExpand"  Text="دفع القسط" FontSize="20" Style="{StaticResource WishlistbigButton}"   HeightRequest="50" CornerRadius="5" Command="{Binding Nav_PayInstalment_Command}"/>-->
+                                                            <!--<StackLayout Grid.Column="2" Grid.ColumnSpan="2" HeightRequest="70" Spacing="0" Margin="0" Padding="0">
+                                                                <StackLayout.GestureRecognizers>
+                                                                    <TapGestureRecognizer  Command="{Binding Path=BindingContext.Nav_PayInstalment_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                                                                </StackLayout.GestureRecognizers>
+                                                                <Button   HorizontalOptions="FillAndExpand"  Text="دفع القسط" FontSize="20" Style="{StaticResource WishlistbigButton}"   HeightRequest="50" CornerRadius="5" Command="{Binding Nav_PayInstalment_Command}"/>
+                                                            </StackLayout>-->
+                                                            
+
+
+                                                        </Grid>
+
+
+                                                    </StackLayout>
+
+                                                </StackLayout>
+
+                                            </StackLayout>
+                                            <!--#endregion-->
+
+                                            <!--#region down list view -->
+                                            <StackLayout IsVisible="{Binding list_Down_visible}" Spacing="5" Margin="0,5,0,10">
+                                                <StackLayout Orientation="Horizontal" Spacing="0">
+                                                    <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer  Command="{Binding Path=BindingContext.nav_deal_installment_dital_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                                                    </StackLayout.GestureRecognizers>
+                                                    <Label Style="{StaticResource FA.solid.LabelStyle}" WidthRequest="20" Text="{StaticResource angleright}" Margin="10,5,0,0" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black" Rotation="180" />
+                                                    <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource Regularfont}" Text="عرض التفاصيل الصفقه" FontSize="20" VerticalOptions="StartAndExpand" Margin="0,5,10,0" HorizontalOptions="EndAndExpand" TextColor="{StaticResource graycolor}" />
+                                                </StackLayout>
+                                                <BoxView Style="{StaticResource lineBoxView}" Margin="10,0"/>
+                                                <StackLayout Orientation="Horizontal" Spacing="0">
+                                                    <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer  Command="{Binding Path=BindingContext.nav_deal_CostomarDetail_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                                                    </StackLayout.GestureRecognizers>
+                                                    <Label Style="{StaticResource FA.solid.LabelStyle}" WidthRequest="20" Text="{StaticResource angleright}" Margin="10,5,0,0" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black" Rotation="180" />
+                                                    <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource Regularfont}" Text="عرض التفاصيل العميل" FontSize="20" VerticalOptions="StartAndExpand" Margin="0,5,10,0" HorizontalOptions="EndAndExpand" TextColor="{StaticResource graycolor}" />
+                                                </StackLayout>
+                                                <BoxView Style="{StaticResource lineBoxView}" Margin="10,0"/>
+                                                <StackLayout Orientation="Horizontal" Spacing="0">
+                                                    <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer  Command="{Binding Path=BindingContext.delay_installment_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                                                    </StackLayout.GestureRecognizers>
+                                                    <Label Style="{StaticResource FA.solid.LabelStyle}" WidthRequest="20" Text="{StaticResource angleright}" Margin="10,5,0,0" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black" Rotation="180" />
+
+                                                    <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource Regularfont}" Text="تأجيل القسط" FontSize="20" VerticalOptions="StartAndExpand" Margin="0,5,10,0" HorizontalOptions="EndAndExpand" TextColor="{StaticResource graycolor}"/>
+                                                </StackLayout>
+                                                <BoxView Style="{StaticResource lineBoxView}" Margin="10,0"/>
+                                                <StackLayout Orientation="Horizontal" Spacing="0">
+                                                    <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer  Command="{Binding Path=BindingContext.Exemption_installment_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                                                    </StackLayout.GestureRecognizers>
+                                                    <Label Style="{StaticResource FA.solid.LabelStyle}" WidthRequest="20" Text="{StaticResource angleright}" Margin="10,5,0,0" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black" Rotation="180" />
+
+                                                    <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource Regularfont}" Text="عفو القسط" FontSize="20" VerticalOptions="StartAndExpand" Margin="0,5,10,0" HorizontalOptions="EndAndExpand" TextColor="{StaticResource graycolor}" />
+
+
+                                                </StackLayout>
+
+                                            </StackLayout>
+                                            <!--#endregion-->
+                                        </StackLayout>
+
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    
+
+                </StackLayout>
+                
+                <!--End list view--> 
+
+
+            </ScrollView>
+            <!--#endregion-->
+
+
+            <!--#region foter navigation -->
+            <StackLayout Grid.Row="2" Spacing="0">
+                <BoxView Style="{StaticResource lineBoxView}" HorizontalOptions="Fill"   />
+                <Grid   Style="{StaticResource gridFoter}" BackgroundColor="#fff">
+
+
+                    <StackLayout Grid.Column="0" HorizontalOptions="Start" Spacing="0" >
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer  Command="{Binding Path=BindingContext.Nav_To_Management_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                        </StackLayout.GestureRecognizers>
+                        <Label Style="{StaticResource FA.solid.LabelStyle.homeIcon}" Text="{StaticResource  cogs}" Margin="17,0,0,0" TextColor="{Binding Management_icon_color}" />
+                        <Label Text="الإدارة" Style="{StaticResource LabelStyle.homeText}"  TextColor="{Binding Management_icon_color}" FontFamily="{StaticResource lightfont}"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1"  Spacing="0">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer  Command="{Binding Path=BindingContext.Nav_To_costomares_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                        </StackLayout.GestureRecognizers>
+                        <Label Style="{StaticResource FA.solid.LabelStyle.homeIcon}"  Text="{StaticResource  users}" Margin="17,0,0,0" TextColor="{Binding costomares_icon_color}" />
+                        <Label Text="العملاء"  Style="{StaticResource LabelStyle.homeText}"  TextColor="{Binding costomares_icon_color}" FontFamily="{StaticResource lightfont}"/>
+                    </StackLayout >
+
+                    <Frame Grid.Column="2" HeightRequest="50" WidthRequest="50" CornerRadius="30" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,-5,0,0" Padding="0" BackgroundColor="{Binding InquiryPage_icon_color}">
+                        <Frame.GestureRecognizers>
+
+                            <!--<TapGestureRecognizer  Command="{Binding Path=BindingContext.Nav_To_testselcteditem_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />-->
+                            <TapGestureRecognizer  Command="{Binding Path=BindingContext.Nav_To_InquiryPage_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                        </Frame.GestureRecognizers>
+                        <Label Text="+" FontSize="25" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                    </Frame>
+
+                    <StackLayout Grid.Column="3" Spacing="0" Margin="0,0,-10,0" >
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer  Command="{Binding Path=BindingContext.Nav_To_Group_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                        </StackLayout.GestureRecognizers>
+                        <Label Style="{StaticResource FA.solid.LabelStyle.homeIcon}" Text="{StaticResource  listtt}" TextColor="{Binding Group_icon_color}" />
+                        <Label Text="المجموعات"  Style="{StaticResource LabelStyle.homeText}" TextColor="{Binding Group_icon_color}" FontFamily="{StaticResource lightfont}"/>
+                    </StackLayout>
+
+                    <StackLayout  Grid.Column="4" IsEnabled="False" HorizontalOptions="End" Margin="0,0,0,0"  Spacing="0">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer  Command="{Binding Path=BindingContext.Nav_To_installment_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                        </StackLayout.GestureRecognizers>
+                        <Label Style="{StaticResource FA.solid.LabelStyle.homeIcon}" Text="{StaticResource  data}" TextColor="{Binding installment_icon_color}" Margin="25,0,0,0" />
+                        <Label Text="الأقساط"  Style="{StaticResource LabelStyle.homeText}" TextColor="{Binding installment_icon_color}" FontFamily="{StaticResource lightfont}"/>
+                    </StackLayout>
+
+
+                </Grid>
+            </StackLayout>
+
+
+            <!--#endregion-->
+            
+        </Grid>
+        <!--#endregion-->
+
+    </ContentPage.Content>
+</ContentPage>

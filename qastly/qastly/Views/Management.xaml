@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:vm="clr-namespace:qastly.ViewModels"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource PageBackGroundColor}"
+             mc:Ignorable="d"
+             x:Name="Page"
+             x:Class="qastly.Views.Management">
+    <ContentPage.BindingContext>
+        <vm:MainViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <!--#region general stacklayout-->
+        <StackLayout Spacing="0" >
+            <!--#region Content stacklayout-->
+            <StackLayout Spacing="0" VerticalOptions="StartAndExpand" >
+                <!--#region nav bar -->
+
+                <!--#endregion-->
+
+                <!--#region center Content  -->
+                <ScrollView>
+                    <StackLayout Margin="0,0,0,0" Spacing="0" VerticalOptions="Center" >
+                        <!--#region heder img  -->
+                        <StackLayout Spacing="0" VerticalOptions="Start" >
+                            <Grid Style="{StaticResource gridOneRowOneColme}">
+                                <StackLayout Grid.Column="0" Grid.Row="0" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+                                    <Image Source="blueBackground.png" Aspect="AspectFit"/>
+                                </StackLayout>
+                                <StackLayout Style="{StaticResource HeaderStackLayout}" BackgroundColor="Transparent" Grid.Column="0" Grid.Row="0" >
+                                    <Button Style="{StaticResource FA.solid.ButtonStyle}" Text="{StaticResource  Search}" TextColor="#fff" HorizontalOptions="StartAndExpand"  FontSize="23" Margin="5,0,15,0"  Command="{Binding Nav_To_Search_Command}"/>
+                                </StackLayout>
+                                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Grid.Column="0" Grid.Row="0" >
+                                    <Label Style="{StaticResource Headerlable}" FontFamily="{StaticResource Regularfont}" Text="الرصيد الحالى"  HorizontalOptions="Center" Margin="0,0,0,0"/>
+                                    <Label Style="{StaticResource Headerlable}" FontFamily="{StaticResource Regularfont}" Text="$ 25000"  HorizontalOptions="Center" Margin="0,0,0,0"/>
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+                        <!--#endregion-->
+
+                        <!--#region Costomar information  -->
+                        <Label Text="الخذينه" FontFamily="{StaticResource lightfont}" FontSize="16" HorizontalOptions="EndAndExpand" Margin="0,0,10,0"/>
+                        <StackLayout Spacing="6" BackgroundColor="#fff" Padding="0,0,0,0" Margin="0,10,0,0">
+                            <!--#region Profits information  -->
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer  Command="{Binding Path=BindingContext.Nav_To_OutMoney_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                                </StackLayout.GestureRecognizers>
+                                <Label Style="{StaticResource FA.solid.LabelStyle}" WidthRequest="20" Text="{StaticResource angleright}" Margin="10,5,0,0" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black" Rotation="180" />
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource Regularfont}" Text="{Binding outMoneyTotal_Mount}" FontSize="20" VerticalOptions="StartAndExpand" Margin="10,5,0,0" HorizontalOptions="Start" TextColor="{StaticResource graycolor}" />
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource Regularfont}" Text="الرصيد الخارجى" FontSize="20" VerticalOptions="StartAndExpand" Margin="0,5,10,0" HorizontalOptions="EndAndExpand" TextColor="{StaticResource graycolor}" />
+                            </StackLayout>
+                            <BoxView Style="{StaticResource lineBoxView}" />
+                            <!--#endregion-->
+                            <!--#region Profits information  -->
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource Regularfont}" Text="{Binding Total_Money}" FontSize="20" VerticalOptions="StartAndExpand" Margin="20,5,0,0" HorizontalOptions="Start" TextColor="{StaticResource graycolor}" />
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource Regularfont}" Text="اجمالى راس المال " FontSize="20" VerticalOptions="StartAndExpand" Margin="0,5,10,0" HorizontalOptions="EndAndExpand" TextColor="{StaticResource graycolor}" />
+                            </StackLayout>
+                            <BoxView Style="{StaticResource lineBoxView}" />
+                            <!--#endregion-->
+                        </StackLayout>
+
+                        <Label Text="الحسابات" FontFamily="{StaticResource lightfont}" FontSize="16" HorizontalOptions="EndAndExpand" Margin="0,10,10,0"/>
+                        <StackLayout Spacing="6" BackgroundColor="#fff" Padding="0,0,0,0" Margin="0,10,0,0">
+
+                            <!--#region Profits information  -->
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer  Command="{Binding Path=BindingContext.Nav_To_Profits_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                                </StackLayout.GestureRecognizers>
+                                <Label Style="{StaticResource FA.solid.LabelStyle}" WidthRequest="20" Text="{StaticResource angleright}" Margin="10,5,0,0" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black" Rotation="180" />
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource Regularfont}" Text="2000" FontSize="20" VerticalOptions="StartAndExpand" Margin="10,5,0,0" HorizontalOptions="Start" TextColor="{StaticResource graycolor}" />
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource Regularfont}" Text="الارباح" FontSize="20" VerticalOptions="StartAndExpand" Margin="0,5,10,0" HorizontalOptions="EndAndExpand" TextColor="{StaticResource graycolor}" />
+                            </StackLayout>
+                            <BoxView Style="{StaticResource lineBoxView}" />
+                            <!--#endregion-->
+
+                            <!--#region Profits information  -->
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer  Command="{Binding Path=BindingContext.Nav_To_pocketMoney_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                                    <!--<TapGestureRecognizer  Command="{Binding Path=BindingContext.DleateAll_PocketMoney, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />-->
+                                </StackLayout.GestureRecognizers>
+                                <Label Style="{StaticResource FA.solid.LabelStyle}" WidthRequest="20" Text="{StaticResource angleright}" Margin="10,5,0,0" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black" Rotation="180" />
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource Regularfont}" Text="1000" FontSize="20" VerticalOptions="StartAndExpand" Margin="10,5,0,0" HorizontalOptions="Start" TextColor="{StaticResource graycolor}" />
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource Regularfont}" Text="المصروفات" FontSize="20" VerticalOptions="StartAndExpand" Margin="0,5,10,0" HorizontalOptions="EndAndExpand" TextColor="{StaticResource graycolor}" />
+                            </StackLayout>
+                            <BoxView Style="{StaticResource lineBoxView}" />
+                            <!--#endregion-->
+
+
+                            <!--#region Profits information  -->
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer  Command="{Binding Path=BindingContext.Nav_To_debt_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                                </StackLayout.GestureRecognizers>
+                                <Label Style="{StaticResource FA.solid.LabelStyle}" WidthRequest="20" Text="{StaticResource angleright}" Margin="10,5,0,0" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black" Rotation="180" />
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource Regularfont}" Text="500" FontSize="20" VerticalOptions="StartAndExpand" Margin="10,5,0,0" HorizontalOptions="Start" TextColor="{StaticResource graycolor}" />
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource Regularfont}" Text="الديون" FontSize="20" VerticalOptions="StartAndExpand" Margin="0,5,10,0" HorizontalOptions="EndAndExpand" TextColor="{StaticResource graycolor}" />
+                            </StackLayout>
+                            <BoxView Style="{StaticResource lineBoxView}" />
+                            <!--#endregion-->
+
+                            <!--#region Profits information  -->
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer  Command="{Binding Path=BindingContext.Nav_To_Wallet_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                                </StackLayout.GestureRecognizers>
+                                <Label Style="{StaticResource FA.solid.LabelStyle}" WidthRequest="20" Text="{StaticResource angleright}" Margin="10,5,0,0" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black" Rotation="180" />
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource Regularfont}" Text="{Binding FundsTotalMount}" FontSize="20" VerticalOptions="StartAndExpand" Margin="10,5,0,0" HorizontalOptions="Start" TextColor="{StaticResource graycolor}" />
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource Regularfont}" Text="الشنطة او المحفظة" FontSize="20" VerticalOptions="StartAndExpand" Margin="0,5,10,0" HorizontalOptions="EndAndExpand" TextColor="{StaticResource graycolor}" />
+                            </StackLayout>
+                            <BoxView Style="{StaticResource lineBoxView}" />
+                            <!--#endregion-->
+
+                            <!--#region Profits information  -->
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer  Command="{Binding Path=BindingContext.Nav_To_Deal_Archives_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                                </StackLayout.GestureRecognizers>
+                                <Label Style="{StaticResource FA.solid.LabelStyle}" WidthRequest="20" Text="{StaticResource angleright}" Margin="10,5,0,0" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black" Rotation="180" />
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource Regularfont}" Text="الصفقات القديمة" FontSize="20" VerticalOptions="StartAndExpand" Margin="0,5,10,0" HorizontalOptions="EndAndExpand" TextColor="{StaticResource graycolor}" />
+                            </StackLayout>
+                            <BoxView Style="{StaticResource lineBoxView}" />
+                            <!--#endregion-->
+
+                        </StackLayout>
+                        <!--#endregion-->
+
+                        <Label Text="اعدادات عامه" FontFamily="{StaticResource lightfont}" FontSize="16" HorizontalOptions="EndAndExpand" Margin="0,10,10,0"/>
+                        <StackLayout Spacing="6" BackgroundColor="#fff" Padding="0,0,0,0" Margin="0,10,0,30">
+                            <!--#region Profits information  -->
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer  Command="{Binding Path=BindingContext.UploadpackUPAsync, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                                </StackLayout.GestureRecognizers>
+                                <Label Style="{StaticResource FA.solid.LabelStyle}" WidthRequest="20" Text="{StaticResource angleright}" Margin="10,5,0,0" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black" Rotation="180" />
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource Regularfont}" Text=" رفع نسخه احتياطية" FontSize="20" VerticalOptions="StartAndExpand" Margin="0,5,10,0" HorizontalOptions="EndAndExpand" TextColor="{StaticResource graycolor}" />
+                            </StackLayout>
+                            <BoxView Style="{StaticResource lineBoxView}" />
+                            <!--#endregion-->
+
+
+                            <!--#region Profits information  -->
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer  Command="{Binding Path=BindingContext.DowenloadpackUPAsync, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                                </StackLayout.GestureRecognizers>
+                                <Label Style="{StaticResource FA.solid.LabelStyle}" WidthRequest="20" Text="{StaticResource angleright}" Margin="10,5,0,0" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black" Rotation="180" />
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource Regularfont}" Text=" تنزيل نسخه احتياطية" FontSize="20" VerticalOptions="StartAndExpand" Margin="0,5,10,0" HorizontalOptions="EndAndExpand" TextColor="{StaticResource graycolor}" />
+                            </StackLayout>
+                            <BoxView Style="{StaticResource lineBoxView}" />
+                            <!--#endregion-->
+
+
+
+
+                    <!--#region Profits information  -->
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                <Label Style="{StaticResource FA.solid.LabelStyle}" WidthRequest="20" Text="{StaticResource angleright}" Margin="10,5,0,0" HorizontalOptions="Start" VerticalOptions="Center" TextColor="Black" Rotation="180" />
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource Regularfont}" Text=" كلمه السر" FontSize="20" VerticalOptions="StartAndExpand" Margin="0,5,10,0" HorizontalOptions="EndAndExpand" TextColor="{StaticResource graycolor}" />
+                            </StackLayout>
+                            <BoxView Style="{StaticResource lineBoxView}" />
+                            <!--#endregion-->
+
+
+
+                        </StackLayout>
+
+                        <StackLayout x:Name="UserArea" >
+
+                            <!-- Signed out UI -->
+                            <StackLayout IsVisible="{Binding Path=IsSignedOut, Source={x:Static Application.Current}}">
+                                <Label Text="Sign in to get started" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Medium" Margin="10,20,10,20" />
+                                <Button Text="Sign in" Clicked="OnSignIn" HorizontalOptions="FillAndExpand" />
+                            </StackLayout>
+
+                            <!-- Signed in UI -->
+                            <StackLayout IsVisible="{Binding Path=IsSignedIn, Source={x:Static Application.Current}}">
+                                <Label Text="{Binding Path=UserEmail, Source={x:Static Application.Current}}" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Medium" Margin="10,20,10,20" />
+                                <Button Text="Sign out" Margin="0,20,0,20" Clicked="OnSignOut" HorizontalOptions="FillAndExpand" />
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
+
+                <!--#endregion-->
+            </StackLayout>
+            <!--#endregion-->
+
+
+            <!--#region foter navigation -->
+            <StackLayout Grid.Row="2" Spacing="0">
+                <BoxView Style="{StaticResource lineBoxView}" HorizontalOptions="Fill"   />
+                <Grid   Style="{StaticResource gridFoter}" BackgroundColor="#fff">
+
+
+                    <StackLayout IsEnabled="False" Grid.Column="0" HorizontalOptions="Start" Spacing="0" >
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer  Command="{Binding Path=BindingContext.Nav_To_Management_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                        </StackLayout.GestureRecognizers>
+                        <Label Style="{StaticResource FA.solid.LabelStyle.homeIcon}" Text="{StaticResource  cogs}" Margin="17,0,0,0" TextColor="{Binding Management_icon_color}" />
+                        <Label Text="الإدارة" Style="{StaticResource LabelStyle.homeText}"  TextColor="{Binding Management_icon_color}" FontFamily="{StaticResource lightfont}"/>
+                    </StackLayout>
+
+                    <StackLayout   Grid.Column="1"  Spacing="0">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer  Command="{Binding Path=BindingContext.Nav_To_costomares_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                        </StackLayout.GestureRecognizers>
+                        <Label Style="{StaticResource FA.solid.LabelStyle.homeIcon}"  Text="{StaticResource  users}" Margin="17,0,0,0" TextColor="{Binding costomares_icon_color}" />
+                        <Label Text="العملاء"  Style="{StaticResource LabelStyle.homeText}"  TextColor="{Binding costomares_icon_color}" FontFamily="{StaticResource lightfont}"/>
+                    </StackLayout >
+
+                    <Frame    Grid.Column="2" HeightRequest="50" WidthRequest="50" CornerRadius="30" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,-5,0,0" Padding="0" BackgroundColor="{Binding InquiryPage_icon_color}">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer  Command="{Binding Path=BindingContext.Nav_To_InquiryPage_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                        </Frame.GestureRecognizers>
+                        <Label Text="+" FontSize="25" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                    </Frame>
+
+                    <StackLayout Grid.Column="3" Spacing="0" Margin="0,0,-10,0" >
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer  Command="{Binding Path=BindingContext.Nav_To_Group_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                        </StackLayout.GestureRecognizers>
+                        <Label Style="{StaticResource FA.solid.LabelStyle.homeIcon}" Text="{StaticResource  listtt}" TextColor="{Binding Group_icon_color}" />
+                        <Label Text="المجموعات"  Style="{StaticResource LabelStyle.homeText}" TextColor="{Binding Group_icon_color}" FontFamily="{StaticResource lightfont}"/>
+                    </StackLayout>
+
+                    <StackLayout  Grid.Column="4"  HorizontalOptions="End" Margin="0,0,0,0"  Spacing="0">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer  Command="{Binding Path=BindingContext.Nav_To_installment_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                        </StackLayout.GestureRecognizers>
+                        <Label Style="{StaticResource FA.solid.LabelStyle.homeIcon}" Text="{StaticResource  data}" TextColor="{Binding installment_icon_color}" Margin="25,0,0,0" />
+                        <Label Text="الأقساط"  Style="{StaticResource LabelStyle.homeText}" TextColor="{Binding installment_icon_color}" FontFamily="{StaticResource lightfont}"/>
+                    </StackLayout>
+
+
+                </Grid>
+            </StackLayout>
+
+
+            <!--#endregion-->
+
+        </StackLayout>
+        <!--#endregion-->
+    </ContentPage.Content>
+</ContentPage>

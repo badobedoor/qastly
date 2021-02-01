@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="qastly.Views.UpdateCostomares"
+            xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:vm="clr-namespace:qastly.ViewModels"
+             NavigationPage.HasNavigationBar="False"             
+             x:Name="Page">
+    <ContentPage.BindingContext>
+        <vm:MainViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <!--#region general stacklayout-->
+        <StackLayout Spacing="0" >
+            <!--#region Content stacklayout-->
+            <StackLayout Spacing="0" VerticalOptions="Start" >
+                <!--#region nav bar -->
+                <StackLayout Style="{StaticResource HeaderStackLayout}" Spacing="0" Padding="0" Margin="0,0,0,2">
+                    <Button Style="{StaticResource FA.solid.ButtonStyle}" Text="{StaticResource  Search}" HorizontalOptions="StartAndExpand"  FontSize="23" Margin="5,0,15,0"  Command="{Binding Nav_To_Search_Command}"/>
+                    <Button Style="{StaticResource FA.solid.ButtonStyle}" Text="{StaticResource  arrowleft}" HorizontalOptions="End"  FontSize="23" Margin="0,0,15,0"  Command="{Binding Nav_To_costomares_Command}" Rotation="180"/>
+                </StackLayout>
+                <!--#endregion-->
+
+                <!--#region heder lable -->
+                <Label Style="{StaticResource Smalllable}" FontFamily="{StaticResource lightfont}" Text="قسـطـلى"  FontSize="45" Margin="0,0,0,10" TextColor="#3B3B3B"/>
+                <BoxView Style="{StaticResource lineBoxView}" HorizontalOptions="Center" WidthRequest="75"  HeightRequest="2" Color="#3B3B3B" Margin="0,-15,0,0"/>
+                <Label Style="{StaticResource Smalllable}" FontFamily="{StaticResource lightfont}"  Text="تعديل عميل" FontSize="17" TextColor="#3B3B3B" Margin="0,0,0,0"/>
+                <!--#endregion-->
+
+
+                <!--#region Entry Content  -->
+                <ScrollView>
+                    <StackLayout Margin="0,20,0,0" Spacing="0" VerticalOptions="Center">
+                        <!--Costomar Name-->
+                        <inputLayout:SfTextInputLayout  Hint=" أسم العميل"  ContainerType="None" FocusedColor="#616161" UnfocusedColor="#616161"  Margin="30,0,25,10" FlowDirection="RightToLeft" >
+                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                <inputLayout:LabelStyle FontSize="16" FontFamily="{StaticResource Key=RegularFont}" />
+                            </inputLayout:SfTextInputLayout.HintLabelStyle>
+
+                            <Entry TextColor="#000" Text="{Binding Edit_costomar_name}"/>
+
+                        </inputLayout:SfTextInputLayout>
+
+
+                        <!--Costomar Phone1-->
+                        <inputLayout:SfTextInputLayout  Hint=" رقم الهاتف 1"   ContainerType="None"  FocusedColor="#616161" UnfocusedColor="#616161"  Margin="30,0,25,10" FlowDirection="RightToLeft" >
+                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                <inputLayout:LabelStyle FontSize="16" FontFamily="{StaticResource Key=RegularFont}"/>
+                            </inputLayout:SfTextInputLayout.HintLabelStyle>
+
+                            <Entry TextColor="#000" Text="{Binding Edit_costomar_phone1, Mode=TwoWay}" Keyboard="Numeric"/>
+
+                        </inputLayout:SfTextInputLayout>
+
+                        <!--Costomar Phone2-->
+                        <inputLayout:SfTextInputLayout  Hint=" رقم الهاتف 2"  ContainerType="None"  FocusedColor="#616161" UnfocusedColor="#616161"  Margin="30,0,25,10" FlowDirection="RightToLeft" >
+                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                <inputLayout:LabelStyle FontSize="16" FontFamily="{StaticResource Key=RegularFont}"/>
+                            </inputLayout:SfTextInputLayout.HintLabelStyle>
+
+                            <Entry TextColor="#000" Text="{Binding Edit_costomar_phone2, Mode=TwoWay}" Keyboard="Numeric"/>
+
+                        </inputLayout:SfTextInputLayout>
+
+                        <!--Costomar Phone3-->
+                        <inputLayout:SfTextInputLayout  Hint=" رقم الهاتف 3"  ContainerType="None" FocusedColor="#616161" UnfocusedColor="#616161"  Margin="30,0,25,10" FlowDirection="RightToLeft" >
+                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                <inputLayout:LabelStyle FontSize="16" FontFamily="{StaticResource Key=RegularFont}"/>
+                            </inputLayout:SfTextInputLayout.HintLabelStyle>
+
+                            <Entry TextColor="#000" Text="{Binding Edit_costomar_phone3, Mode=TwoWay}" Keyboard="Numeric"/>
+
+                        </inputLayout:SfTextInputLayout>
+
+
+                        <!--Costomar NO Num-->
+                        <inputLayout:SfTextInputLayout  Hint=" رقم البطاقة"  ContainerType="None" FocusedColor="#616161" UnfocusedColor="#616161"  Margin="30,0,25,10" FlowDirection="RightToLeft" >
+                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                <inputLayout:LabelStyle FontSize="16" FontFamily="{StaticResource Key=RegularFont}"/>
+                            </inputLayout:SfTextInputLayout.HintLabelStyle>
+
+                            <Entry TextColor="#000" Text="{Binding Edit_costomar_IDnum, Mode=TwoWay}" Keyboard="Numeric"/>
+
+                        </inputLayout:SfTextInputLayout>
+
+
+                        <!--Costomar Adress-->
+                        <inputLayout:SfTextInputLayout  Hint=" الحي / المنطقة" ContainerType="None" FocusedColor="#616161" UnfocusedColor="#616161"  Margin="30,0,25,10" FlowDirection="RightToLeft" >
+                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                <inputLayout:LabelStyle FontSize="16" FontFamily="{StaticResource Key=RegularFont}"/>
+                            </inputLayout:SfTextInputLayout.HintLabelStyle>
+
+                            <Entry TextColor="#000" Text="{Binding Edit_costomar_address, Mode=TwoWay}" />
+
+                        </inputLayout:SfTextInputLayout>
+
+                        <!--Costomar Adress-->
+                        <inputLayout:SfTextInputLayout  Hint=" رقم العمارة" ContainerType="None" FocusedColor="#616161" UnfocusedColor="#616161"  Margin="30,0,25,10" FlowDirection="RightToLeft" >
+                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                <inputLayout:LabelStyle FontSize="16" FontFamily="{StaticResource Key=RegularFont}"/>
+                            </inputLayout:SfTextInputLayout.HintLabelStyle>
+
+                            <Entry TextColor="#000" Text="{Binding Edit_costomar_BuildingNUM, Mode=TwoWay}" />
+
+                        </inputLayout:SfTextInputLayout>
+
+
+                        <!--Costomar Adress-->
+                        <inputLayout:SfTextInputLayout  Hint=" رقم الشقة" ContainerType="None" FocusedColor="#616161" UnfocusedColor="#616161"  Margin="30,0,25,10" FlowDirection="RightToLeft" >
+                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                <inputLayout:LabelStyle FontSize="16" FontFamily="{StaticResource Key=RegularFont}"/>
+                            </inputLayout:SfTextInputLayout.HintLabelStyle>
+
+                            <Entry TextColor="#000" Text="{Binding  Edit_costomar_flatNum, Mode=TwoWay}" />
+
+                        </inputLayout:SfTextInputLayout>
+
+
+
+                        <!--Costomar guarantor Name-->
+                        <inputLayout:SfTextInputLayout  Hint=" أسم الضامن"  ContainerType="None" FocusedColor="#616161" UnfocusedColor="#616161"  Margin="30,0,25,10" FlowDirection="RightToLeft" >
+                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                <inputLayout:LabelStyle FontSize="16" FontFamily="{StaticResource Key=RegularFont}"/>
+                            </inputLayout:SfTextInputLayout.HintLabelStyle>
+
+                            <Entry TextColor="#000" Text="{Binding Edit_costomar_guarantorName, Mode=TwoWay}" />
+
+                        </inputLayout:SfTextInputLayout>
+
+
+
+                        <!--Costomar guarantor Phone-->
+                        <inputLayout:SfTextInputLayout  Hint=" رقم هاتف الضامن"  ContainerType="None" FocusedColor="#616161" UnfocusedColor="#616161"  Margin="30,0,25,10" FlowDirection="RightToLeft" >
+                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                <inputLayout:LabelStyle FontSize="16" FontFamily="{StaticResource Key=RegularFont}"/>
+                            </inputLayout:SfTextInputLayout.HintLabelStyle>
+
+                            <Entry TextColor="#000" Text="{Binding Edit_costomar_guarantorphone, Mode=TwoWay}" Keyboard="Numeric"/>
+
+                        </inputLayout:SfTextInputLayout>
+
+                    </StackLayout>
+                </ScrollView>
+
+                <!--#endregion-->
+
+
+
+            </StackLayout>
+            <!--#endregion-->
+
+            <!--#region Foter -->
+
+            <StackLayout VerticalOptions="Center"></StackLayout>
+            <StackLayout Spacing="10" VerticalOptions="EndAndExpand" Margin="0,0,0,0"  BackgroundColor="#fff">
+                <BoxView Style="{StaticResource lineBoxView}"   />
+                <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Center" >
+
+                    <Button  Style="{StaticResource productsIconButton}"   Text="حفظ التغيرات"  VerticalOptions="Center"  WidthRequest="270" HeightRequest="40" HorizontalOptions="Center"  Command="{Binding UpdatecostomarComand}"/>
+
+                    <Label Style="{StaticResource WishlistIconLabel}" Text="{StaticResource paperclip}" WidthRequest="40">
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+
+            <!--#endregion-->
+
+        </StackLayout>
+        <!--#endregion-->
+    </ContentPage.Content>
+</ContentPage>

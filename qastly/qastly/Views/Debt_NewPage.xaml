@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="qastly.Views.Debt_NewPage"
+              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:vm="clr-namespace:qastly.ViewModels"
+             xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource PageBackGroundColor}"
+             x:Name="Page">
+    <ContentPage.BindingContext>
+        <vm:MainViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <!--Start general stacklayout-->
+        <StackLayout Spacing="0">
+
+            <!--Start background color-->
+            <StackLayout  BackgroundColor="{StaticResource PageBackGroundColor}"  Opacity=".97"/>
+            <!--End background color-->
+
+            <!--Start Content StackLayout-->
+            <StackLayout Spacing="0" >
+
+                <!--#region nav bar -->
+                <StackLayout Style="{StaticResource HeaderStackLayout}" Spacing="0" Padding="0" Margin="0,0,0,2">
+                    <Button Style="{StaticResource FA.solid.ButtonStyle}" Text="{StaticResource  Search}" HorizontalOptions="StartAndExpand"  FontSize="23" Margin="5,0,15,0"  Command="{Binding Nav_To_Search_Command}"/>
+                    <Label Style="{StaticResource Headerlable}" FontFamily="{StaticResource lightfont}" FontSize="22" Text="سجل الديون "  HorizontalOptions="End"  Margin="0,0,0,0"/>
+                    <Button Style="{StaticResource FA.solid.ButtonStyle}" Text="{StaticResource  arrowleft}" HorizontalOptions="End"  FontSize="23" Margin="0,0,10,0"  Command="{Binding Nav_To_Management_Command}" Rotation="180"/>
+                </StackLayout>
+                <!--#endregion-->
+
+
+                <ScrollView VerticalOptions="Start">
+                    <StackLayout Spacing="0">
+                        <!--#region Header box -->
+                        <Grid Style="{StaticResource gridOneRowOneColme}" Margin="10,5,10,0">
+                            <StackLayout Grid.Column="0" Grid.Row="0" VerticalOptions="StartAndExpand"  HorizontalOptions="FillAndExpand">
+                                <Image Source="bBackground.png" Aspect="AspectFit"  />
+                            </StackLayout>
+                            <StackLayout VerticalOptions="Center" Orientation="Horizontal" Grid.Row="0" Grid.Column="0" HorizontalOptions="Fill" Margin="20,0">
+
+                                <StackLayout HorizontalOptions="CenterAndExpand" BindingContext="{Binding debt_Detail}">
+                                    <Label Style="{StaticResource installmentRecordlable}" Text="مجمل المديونات المضافة إلى"/>
+                                    <Label Style="{StaticResource installmentRecordlable}" Text="{Binding debtorName}"/>
+                                    <Label Style="{StaticResource installmentRecordlable}" Text="{Binding amount ,StringFormat='$ {0}'}" />
+                                </StackLayout>
+
+                            </StackLayout>
+                        </Grid>
+
+                        <!--#endregion-->
+
+                        <!--#region list view -->
+
+                        <ScrollView Margin="0,15,0,0">
+                            <!--#region list view -->
+                            <syncfusion:SfListView x:Name="ac"  ItemSize="100"  ItemSpacing="10,0,10,5" ItemsSource="{Binding Listdebt_New}">
+                                <syncfusion:SfListView.ItemTemplate  >
+                                    <DataTemplate>
+                                        <ViewCell >
+                                            <border:SfBorder BorderColor="#DCD8D8" BorderWidth="1" HeightRequest="100"  Margin="0" CornerRadius="5" >
+                                                <StackLayout Spacing="0" BackgroundColor="#fff" Padding="0,10,0,0">
+                                                    <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer  Command="{Binding Path=BindingContext.Display_Debt_Note_alert_Comand, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                                                    </StackLayout.GestureRecognizers>
+                                                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" Margin="0,0,17,5">
+
+                                                        <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="15,0,0,0">
+                                                            <Label Style="{StaticResource  Boldlable}" TextColor="Black" Text="{Binding amount ,StringFormat='$ {0}'}" FontSize="22" VerticalOptions="Center"  FontFamily="{StaticResource lightfont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                                        </StackLayout>
+
+                                                        <StackLayout  Style="{StaticResource contanerStartStackLayout}"  VerticalOptions="Center" Margin="0,0,0,0" HorizontalOptions="End">
+                                                            <!--<Label Style="{StaticResource  Boldlable}" TextColor="Black" Text="{Binding debtorName}" FontSize="22" VerticalOptions="Center" HorizontalOptions="End" FontFamily="{StaticResource lightfont}"/>-->
+                                                            <Label Style="{StaticResource listViewPriceLabel}" Text="{Binding date,StringFormat='{0:yyyy/MM/dd}'}" TextColor="#5272C5" FontSize="20" HorizontalOptions="End"/>
+                                                        </StackLayout>
+
+                                                    </StackLayout>
+
+
+                                                    <BoxView Style="{StaticResource lineBoxView}"  />
+
+                                                    <StackLayout   Orientation="Horizontal"  Spacing="0" Margin="0,5,0,0">
+                                                        <StackLayout VerticalOptions="Center" Orientation="Horizontal" HorizontalOptions="StartAndExpand" Padding="5" Spacing="0"  Margin="10,0,0,0" >
+                                                            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                                                                <StackLayout.GestureRecognizers>
+                                                                    <TapGestureRecognizer  Command="{Binding Path=BindingContext.Debt_Dleate_Select_List_Comand, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                                                                </StackLayout.GestureRecognizers> 
+                                                                <Label Style="{StaticResource FA.solid.LabelStyle}" Text="{StaticResource DeleteIcon }" TextColor="#333030"   WidthRequest="25" FontSize="22"/>
+                                                                <Label Style="{StaticResource Boldlable}" Text="مسح" TextColor="#333030" VerticalOptions="Center" />
+                                                            </StackLayout>
+                                                        </StackLayout>
+                                                        <!--<StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="End" Margin="0,2,15,0" Spacing="15">
+                                                            
+                                                        </StackLayout>-->
+                                                    </StackLayout>
+
+                                                </StackLayout>
+
+
+                                            </border:SfBorder>
+
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </syncfusion:SfListView.ItemTemplate>
+                            </syncfusion:SfListView>
+                            <!--#endregion-->
+
+                        </ScrollView>
+
+                        <!--#endregion-->
+                    </StackLayout>
+                </ScrollView>
+
+
+
+
+
+                <!--#region Foter -->
+                <StackLayout VerticalOptions="Center"></StackLayout>
+                <StackLayout Spacing="10" VerticalOptions="EndAndExpand" Margin="0,0,0,7"  >
+                    <StackLayout Orientation="Horizontal" Spacing="10" >
+                        <Button Style="{StaticResource mediumButton}"   HorizontalOptions="FillAndExpand"  Margin="0,0,0,0" Text="أرشيف الديون المدفوعة"  FontSize="18" Command="{Binding Nav_To_Debt_Old_P_Command}"/>
+                    </StackLayout>
+                </StackLayout>
+                <!--#endregion-->
+
+            </StackLayout>
+            <!--End Content StackLayout-->
+
+        </StackLayout>
+        <!--End general stacklayout-->
+    </ContentPage.Content>
+</ContentPage>

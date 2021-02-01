@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              xmlns:vm="clr-namespace:qastly.ViewModels"
+              mc:Ignorable="d"              x:Name="Page"
+             x:Class="qastly.Views.CostomarDetailPhoto">
+    <ContentPage.BindingContext>
+        <vm:MainViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <CarouselView CurrentItemChanged="CarouselView_CurrentItemChanged"  ItemsSource="{Binding Costomer_Photo_ImageSource}">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Image  Source="{Binding .}"  Aspect="AspectFit"/>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <Label IsVisible="False" x:Name="Path_Lable" Text="{Binding Costomar_photo_path ,Mode=TwoWay}"/>
+            <Label IsVisible="False" x:Name="photo_id_Lable" Text="{Binding Costomar_photo_path ,Mode=TwoWay}"/>
+            <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="Center" Margin="0,0,0,5">
+
+                <Button  Style="{StaticResource productsIconButton}" CornerRadius="20" WidthRequest="250" Text="مسح"  VerticalOptions="Center"   HeightRequest="40" HorizontalOptions="FillAndExpand"  Command="{Binding dleate_photo_Comand}"/>
+
+                <!--<BoxView Style="{StaticResource lineBoxView}" HorizontalOptions="Center" WidthRequest="3"  HeightRequest="40" Color="#3B3B3B" Margin="0,0,0,0"/>-->
+
+                <Label Style="{StaticResource WishlistIconLabel}" Text="{StaticResource paperclip}" WidthRequest="40" Margin="5,0,5,0" BackgroundColor="Transparent">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer  Command="{Binding Path=BindingContext.pick_photo_Comand, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                    </Label.GestureRecognizers>
+                </Label>
+                
+                <Label Style="{StaticResource WishlistIconLabel}" Text="{StaticResource Camera}" WidthRequest="40" Margin="0,0,0,0" BackgroundColor="Transparent">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer  Command="{Binding Path=BindingContext.Take_photo_Comand, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                    </Label.GestureRecognizers>
+                </Label>
+
+            </StackLayout>
+           
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="qastly.Views.installmentRecord"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:vm="clr-namespace:qastly.ViewModels"
+             xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource PageBackGroundColor}"
+           x:Name="Page">
+    <ContentPage.BindingContext>
+        <vm:MainViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        
+        <!--Start general stacklayout-->
+        <StackLayout Spacing="0">
+
+            <!--Start background color-->
+            <StackLayout  BackgroundColor="{StaticResource PageBackGroundColor}"  Opacity=".97"/>
+            <!--End background color-->
+
+            <!--Start Content StackLayout-->
+            <StackLayout Spacing="0" >
+                
+                <!--#region nav bar -->
+                <StackLayout Style="{StaticResource HeaderStackLayout}" Spacing="0" Padding="0" Margin="0,0,0,2">
+                    <Button Style="{StaticResource FA.solid.ButtonStyle}" Text="{StaticResource  Search}" HorizontalOptions="StartAndExpand"  FontSize="23" Margin="5,0,15,0"  Command="{Binding Nav_To_Search_Command}"/>
+                    <Label Style="{StaticResource Headerlable}" FontFamily="{StaticResource lightfont}" FontSize="22" Text="سجل الاقساط"  HorizontalOptions="End"  Margin="0,0,0,0"/>
+                    <Button Style="{StaticResource FA.solid.ButtonStyle}" Text="{StaticResource  arrowleft}" HorizontalOptions="End"  FontSize="23" Margin="0,0,10,0"  Command="{Binding Nav_To_lastPage_Command}" Rotation="180"/>
+                </StackLayout>
+                <!--#endregion-->
+
+               
+                <ScrollView>
+                    <!--#region Header box -->
+                    <StackLayout Spacing="0">
+                        <Grid Style="{StaticResource gridOneRowOneColme}"  Margin="10,15,10,0">
+
+                            <StackLayout Grid.Column="0" Grid.Row="0" VerticalOptions="StartAndExpand"  HorizontalOptions="FillAndExpand">
+                                <Image Source="bBackground.png" Aspect="AspectFit"  />
+                            </StackLayout>
+                            <StackLayout VerticalOptions="Center" Orientation="Horizontal" Grid.Row="0" Grid.Column="0" HorizontalOptions="Fill" Margin="20,0">
+                                <StackLayout HorizontalOptions="StartAndExpand">
+                                    <Label Style="{StaticResource installmentRecordlable}" Text="المدفوع"/>
+                                    <Label Style="{StaticResource installmentRecordlable}" Text="$ 2500"/>
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="CenterAndExpand">
+                                    <Label Style="{StaticResource installmentRecordlable}" Text="القسط"/>
+                                    <Label Style="{StaticResource installmentRecordlable}" Text="$ 250"/>
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="EndAndExpand">
+                                    <Label Style="{StaticResource installmentRecordlable}" Text="المنتبقى"/>
+                                    <Label Style="{StaticResource installmentRecordlable}" Text="$ 1500"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Grid>
+
+                        <!--#endregion-->
+
+                        <!--#region center lable -->
+                        <StackLayout VerticalOptions="Center" Orientation="Horizontal" Grid.Row="0" Grid.Column="0" HorizontalOptions="Fill" Margin="20,10,20,0">
+                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                <Label Style="{StaticResource WishlistIconLabel}"  Text="12" HeightRequest="40" BackgroundColor="#E7EDFF" TextColor="#3D72FF" FontSize="15" HorizontalTextAlignment="Center"/>
+                                <Label Style="{StaticResource installmentRecordlable}" Text="عدد اشهر التقسبط" TextColor="Black" FontSize="13" VerticalTextAlignment="Center"/>
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                <Label Style="{StaticResource WishlistIconLabel}"  Text="20" HeightRequest="40" BackgroundColor="#E7EDFF" TextColor="#3D72FF" FontSize="15" HorizontalTextAlignment="Center"/>
+                                <Label Style="{StaticResource installmentRecordlable}" Text="يوم استحقاق القسط" TextColor="Black" FontSize="13" VerticalTextAlignment="Center"/>
+                            </StackLayout>
+                        </StackLayout>
+                        <!--#endregion-->
+                        <!--#region list view -->
+                        <StackLayout VerticalOptions="StartAndExpand"  Margin="10">
+                            <border:SfBorder BorderColor="#DCD8D8" BorderWidth="1" HeightRequest="55"  Margin="0,0" CornerRadius="5" >
+                                <StackLayout Spacing="0" BackgroundColor="#fff">
+
+                                    <StackLayout VerticalOptions="Center" Orientation="Horizontal" Margin="0,0,17,0" Padding="0,8,0,0">
+
+                                        <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="15,0,0,0">
+                                            <Label Style="{StaticResource  Boldlable}" TextColor="Black" Text="$ 350" FontSize="22" VerticalOptions="Center"  FontFamily="{StaticResource lightfont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                        </StackLayout>
+
+                                        <StackLayout  Style="{StaticResource contanerStartStackLayout}"  VerticalOptions="Center" Margin="0,0,0,0" HorizontalOptions="End">
+                                            <Label Style="{StaticResource  Boldlable}" TextColor="Black" Text="8/2/2020" FontSize="22" VerticalOptions="Center" HorizontalOptions="End" FontFamily="{StaticResource lightfont}"/>
+                                        </StackLayout>
+
+                                    </StackLayout>
+                                </StackLayout>
+                            </border:SfBorder>
+                        </StackLayout>
+                        <ScrollView>
+                            <!--Start list view -->
+                            <syncfusion:SfListView x:Name="ac"  ItemSize="120"  ItemSpacing="0" >
+                                <syncfusion:SfListView.ItemTemplate  >
+                                    <DataTemplate>
+                                        <ViewCell >
+
+
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </syncfusion:SfListView.ItemTemplate>
+                            </syncfusion:SfListView>
+                            <!--End list view -->
+
+                        </ScrollView>
+
+                        <!--#endregion-->
+
+                    </StackLayout>
+                    <!--#endregion-->
+               
+                </ScrollView>
+
+
+                <!--#region Foter -->
+                <StackLayout VerticalOptions="Center"></StackLayout>
+                <StackLayout VerticalOptions="EndAndExpand" Spacing="0">
+                    <Button x:Name="CheckoutBtn" Style="{StaticResource bigButton}"  FontFamily="{StaticResource lightfont}"  Text="دفع قسط" FontSize="20" Margin="0,0,0,0"  BackgroundColor="#3D72FF" />
+                </StackLayout>
+                <!--#endregion-->
+
+            </StackLayout>
+            <!--End Content StackLayout-->
+
+        </StackLayout>
+        <!--End general stacklayout-->
+    </ContentPage.Content>
+</ContentPage>

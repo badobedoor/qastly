@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:vm="clr-namespace:qastly.ViewModels"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource PageBackGroundColor}"
+             x:Class="qastly.Views.DealDetail"
+             x:Name="Page">
+    <ContentPage.BindingContext>
+        <vm:MainViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <!--#region general stacklayout-->
+        <StackLayout Spacing="0" >
+            <!--#region Content stacklayout-->
+            <StackLayout Spacing="0" VerticalOptions="StartAndExpand" >
+                <!--#region nav bar -->
+                <StackLayout Style="{StaticResource HeaderStackLayout}" Spacing="0" Padding="0" Margin="0,0,0,2">
+                    <Button Style="{StaticResource FA.solid.ButtonStyle}" Text="{StaticResource  Search}" HorizontalOptions="StartAndExpand"  FontSize="23" Margin="5,0,15,0"  Command="{Binding Nav_To_Search_Command}"/>
+                    <Label Style="{StaticResource Headerlable}" FontFamily="{StaticResource Regularfont}" FontSize="20" Text="تفاصيل الصفقه"  HorizontalOptions="End" Margin="0,0,0,0"/>
+                    <Button Style="{StaticResource FA.solid.ButtonStyle}" Text="{StaticResource  arrowleft}" HorizontalOptions="End"  FontSize="23" Margin="0,0,5,0"  Command="{Binding Nav_To_lastPage_Command}" Rotation="180"/>
+                </StackLayout>
+                <!--#endregion-->
+
+
+                <!--#region center Content  -->
+                <ScrollView>
+                    
+                    <StackLayout Margin="0,0,0,0" Spacing="10" VerticalOptions="Center" >
+                        <!--#region heder img  -->
+                        <StackLayout VerticalOptions="Start" HeightRequest="150" HorizontalOptions="FillAndExpand" BackgroundColor="#CFE1F0">
+                            <Button Style="{StaticResource FA.solid.ButtonStyle}" Text="{StaticResource  User}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" TextColor="#436F82"  FontSize="120" Margin="0,0,0,-40"  />
+                        </StackLayout>
+                        <!--#endregion-->
+
+                        <!--#region Costomar information  -->
+                        <StackLayout Spacing="6" BackgroundColor="#fff" Padding="0,0,0,6" Margin="0,-10,0,0">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer  Command="{Binding Path=BindingContext.Nav_To_CostomarDetail_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                            </StackLayout.GestureRecognizers>
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+
+                                <Label Style="{StaticResource FA.solid.LabelStyle}" WidthRequest="20" Text="{StaticResource angleright}" Margin="10,5,0,0" HorizontalOptions="StartAndExpand" VerticalOptions="Center" TextColor="Black" Rotation="180" />
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource Regularfont}" Text="بينات العميل" FontSize="20" VerticalOptions="StartAndExpand" Margin="0,0,10,0" HorizontalOptions="EndAndExpand" TextColor="{StaticResource graycolor}" />
+                            </StackLayout>
+                            <BoxView Style="{StaticResource lineBoxView}" />
+                            <StackLayout Orientation="Horizontal" Spacing="0" >
+                                <StackLayout HorizontalOptions="StartAndExpand"/>
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource lightfont}" Text="{Binding Dital_Deal_Data.name}" FontSize="15" VerticalOptions="StartAndExpand" Margin="0,0,10,0" HorizontalOptions="End" TextColor="{StaticResource graycolor}" />
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource lightfont}" Text="الاسم :-" FontSize="15" VerticalOptions="StartAndExpand" Margin="0,0,10,0" HorizontalOptions="End" TextColor="{StaticResource graycolor}" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="0" >
+                                <StackLayout HorizontalOptions="StartAndExpand"/>
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource lightfont}" Text="{Binding Dital_Deal_Data.phone1}" FontSize="15" VerticalOptions="StartAndExpand" Margin="0,0,10,0" HorizontalOptions="End" TextColor="{StaticResource graycolor}" />
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource lightfont}" Text="رقم الهاتف :-" FontSize="15" VerticalOptions="StartAndExpand" Margin="0,0,10,0" HorizontalOptions="End" TextColor="{StaticResource graycolor}" />
+                            </StackLayout>
+                        </StackLayout>
+                        <!--#endregion-->
+                        
+                        <!--<Label Text="بينات الصقفة" FontFamily="{StaticResource lightfont}" FontSize="16" HorizontalOptions="EndAndExpand" Margin="0,10,10,10"/>-->
+
+                        <!--#region Deal information  -->
+                        <StackLayout Spacing="6" BackgroundColor="#fff" Padding="0,0,0,6">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer  Command="{Binding Path=BindingContext.Nav_To_DetailReport_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                            </StackLayout.GestureRecognizers>
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+
+                                <Label Style="{StaticResource FA.solid.LabelStyle}" WidthRequest="20" Text="{StaticResource angleright}" Margin="10,5,0,0" HorizontalOptions="StartAndExpand" VerticalOptions="Center" TextColor="Black" Rotation="180" />
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource Regularfont}" Text="بينات الصفقه" FontSize="20" VerticalOptions="StartAndExpand" Margin="0,0,10,0" HorizontalOptions="EndAndExpand" TextColor="{StaticResource graycolor}" />
+                            </StackLayout>
+                            <BoxView Style="{StaticResource lineBoxView}" />
+                            <StackLayout Orientation="Horizontal" Spacing="0" >
+                                <StackLayout HorizontalOptions="StartAndExpand"/>
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource lightfont}" Text="{Binding Dital_Deal_Data.product_Name}" FontSize="15" VerticalOptions="StartAndExpand" Margin="0,0,10,0" HorizontalOptions="End" TextColor="{StaticResource graycolor}" />
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource lightfont}" Text="اسم المنتج :-" FontSize="15" VerticalOptions="StartAndExpand" Margin="0,0,10,0" HorizontalOptions="End" TextColor="{StaticResource graycolor}" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="0" >
+                                <StackLayout HorizontalOptions="StartAndExpand"/>
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource lightfont}" Text="{Binding Dital_Deal_Data.Total_Paid}" FontSize="15" VerticalOptions="StartAndExpand" Margin="0,0,10,0" HorizontalOptions="End" TextColor="{StaticResource graycolor}" />
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource lightfont}" Text="المبلغ المدفوع :-" FontSize="15" VerticalOptions="StartAndExpand" Margin="0,0,10,0" HorizontalOptions="End" TextColor="{StaticResource graycolor}" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="0" >
+                                <StackLayout HorizontalOptions="StartAndExpand"/>
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource lightfont}" Text="{Binding Dital_Deal_Data.Total_Remaining}" FontSize="15" VerticalOptions="StartAndExpand" Margin="0,0,10,0" HorizontalOptions="End" TextColor="{StaticResource graycolor}" />
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource lightfont}" Text="المبلغ المتبقى :-" FontSize="15" VerticalOptions="StartAndExpand" Margin="0,0,10,0" HorizontalOptions="End" TextColor="{StaticResource graycolor}" />
+                            </StackLayout>
+                        </StackLayout>
+                        <!--#endregion-->
+
+                        <!--#region installment information  -->
+                        <StackLayout Spacing="6" BackgroundColor="#fff" Padding="0,0,0,6">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer  Command="{Binding Path=BindingContext.Nav_To_installmentRecord_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                            </StackLayout.GestureRecognizers>
+                            <StackLayout Orientation="Horizontal" Spacing="0">
+
+                                <Label Style="{StaticResource FA.solid.LabelStyle}" WidthRequest="20" Text="{StaticResource angleright}" Margin="10,5,0,0" HorizontalOptions="StartAndExpand" VerticalOptions="Center" TextColor="Black" Rotation="180" />
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource Regularfont}" Text="سجل الأقساط" FontSize="20" VerticalOptions="StartAndExpand" Margin="0,0,10,0" HorizontalOptions="EndAndExpand" TextColor="{StaticResource graycolor}" />
+                            </StackLayout>
+                            <BoxView Style="{StaticResource lineBoxView}" />
+                            <StackLayout Orientation="Horizontal" Spacing="30" >
+                                <StackLayout HorizontalOptions="StartAndExpand"/>
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource lightfont}" Text="المبلغ المدفوع" FontSize="15" VerticalOptions="StartAndExpand" Margin="0,0,10,0" HorizontalOptions="End" TextColor="{StaticResource graycolor}" />
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource lightfont}" Text="التاريخ" FontSize="15" VerticalOptions="StartAndExpand" Margin="0,0,20,0" HorizontalOptions="End" TextColor="{StaticResource graycolor}" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="30" >
+                                <StackLayout HorizontalOptions="StartAndExpand"/>
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource lightfont}" Text="200" FontSize="15" VerticalOptions="StartAndExpand" Margin="0,0,30,0" HorizontalOptions="End" TextColor="{StaticResource graycolor}" />
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource lightfont}" Text="7/7/2018" FontSize="15" VerticalOptions="StartAndExpand" Margin="0,0,10,0" HorizontalOptions="End" TextColor="{StaticResource graycolor}" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="30" >
+                                <StackLayout HorizontalOptions="StartAndExpand"/>
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource lightfont}" Text="300" FontSize="15" VerticalOptions="StartAndExpand" Margin="0,0,30,0" HorizontalOptions="End" TextColor="{StaticResource graycolor}" />
+                                <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource lightfont}" Text="12/5/2018" FontSize="15" VerticalOptions="StartAndExpand" Margin="0,0,10,0" HorizontalOptions="End" TextColor="{StaticResource graycolor}" />
+                            </StackLayout>
+                        </StackLayout>
+                        <!--#endregion-->
+                        
+                        <!--<Label Text="إعدادات الدفع" FontFamily="{StaticResource lightfont}" FontSize="16" HorizontalOptions="EndAndExpand" Margin="0,0,10,0"/>-->
+
+                        <!--#region installment information  -->
+                        <StackLayout Spacing="10" Padding="30,0,30,0" Margin="0,10,0,30" >
+                            <Button  Style="{StaticResource productsIconButton}"   Text="دفع القسط"  VerticalOptions="Center" HeightRequest="50" HorizontalOptions="FillAndExpand"  Command="{Binding Nav_To_DetailReport_Command}" />
+                            <StackLayout Orientation="Horizontal">
+                                <Button  Style="{StaticResource productsIconButton}"   Text="عغوا"  VerticalOptions="Center" HeightRequest="50" HorizontalOptions="FillAndExpand"  Command="{Binding Nav_To_DetailReport_Command}" />
+                                <Button  Style="{StaticResource productsIconButton}"   Text="تأجيل"  VerticalOptions="Center" HeightRequest="50" HorizontalOptions="FillAndExpand"  Command="{Binding Nav_To_DetailReport_Command}" />
+                            </StackLayout>
+                            <Button  Style="{StaticResource productsIconButton}"   Text="رسالة"  VerticalOptions="Center" HeightRequest="50" HorizontalOptions="FillAndExpand"  Command="{Binding Nav_To_DetailReport_Command}" />
+                            <Button  Style="{StaticResource productsIconButton}"   Text="إتصال"  VerticalOptions="Center" HeightRequest="50" HorizontalOptions="FillAndExpand"  Command="{Binding Nav_To_DetailReport_Command}" />
+                        </StackLayout>
+                        
+                        <!--#endregion-->
+                    </StackLayout>
+                </ScrollView>
+
+                <!--#endregion-->
+            </StackLayout>
+            <!--#endregion-->
+
+            <!--#region Foter -->
+
+            <StackLayout VerticalOptions="CenterAndExpand"></StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="15,0" BackgroundColor="#B7CBFF">
+                <StackLayout HorizontalOptions="StartAndExpand"/>
+                <Label Style="{StaticResource listViewPriceLabel}" Text="450" TextColor="Black" FontAttributes="Bold" FontSize="35" HorizontalOptions="Center" />
+                <StackLayout HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+            <StackLayout Spacing="10" VerticalOptions="EndAndExpand" Margin="0,0,0,0"  BackgroundColor="#fff" HeightRequest="50">
+
+                <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="FillAndExpand" Padding="30,0" Margin="0,0,0,0" VerticalOptions="CenterAndExpand">
+
+                    <Button  Style="{StaticResource productsIconButton}"   Text="تقرير للعميل"  VerticalOptions="Center" HeightRequest="40" HorizontalOptions="FillAndExpand"  Command="{Binding Nav_To_DetailReport_Command}"/>
+
+
+                    <Label Style="{StaticResource WishlistIconLabel}" Text="{StaticResource pencil}" WidthRequest="40">
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+
+            <!--#endregion-->
+            <!--<StackLayout Spacing="6" BackgroundColor="#fff" Padding="0,0,0,6">
+                <StackLayout Orientation="Horizontal" Spacing="0">
+                    <Label Style="{StaticResource FA.solid.LabelStyle}" WidthRequest="20" Text="{StaticResource angleright}" Margin="10,5,0,0" HorizontalOptions="StartAndExpand" VerticalOptions="Center" TextColor="Black" Rotation="180" />
+                    <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource Regularfont}" Text="دفع القسط" FontSize="20" VerticalOptions="StartAndExpand" Margin="0,0,10,0" HorizontalOptions="EndAndExpand" TextColor="{StaticResource graycolor}" />
+                </StackLayout>
+                <BoxView Style="{StaticResource lineBoxView}" />
+                <StackLayout Orientation="Horizontal" Spacing="0">
+                    <Label Style="{StaticResource FA.solid.LabelStyle}" WidthRequest="20" Text="{StaticResource angleright}" Margin="10,5,0,0" HorizontalOptions="StartAndExpand" VerticalOptions="Center" TextColor="Black" Rotation="180" />
+                    <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource Regularfont}" Text="أتصال" FontSize="20" VerticalOptions="StartAndExpand" Margin="0,0,10,0" HorizontalOptions="EndAndExpand" TextColor="{StaticResource graycolor}" />
+                </StackLayout>
+                <BoxView Style="{StaticResource lineBoxView}" />
+                <StackLayout Orientation="Horizontal" Spacing="0">
+                    <Label Style="{StaticResource FA.solid.LabelStyle}" WidthRequest="20" Text="{StaticResource angleright}" Margin="10,5,0,0" HorizontalOptions="StartAndExpand" VerticalOptions="Center" TextColor="Black" Rotation="180" />
+                    <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource Regularfont}" Text="ارسال رساله" FontSize="20" VerticalOptions="StartAndExpand" Margin="0,0,10,0" HorizontalOptions="EndAndExpand" TextColor="{StaticResource graycolor}" />
+                </StackLayout>
+                <BoxView Style="{StaticResource lineBoxView}" />
+                <StackLayout Orientation="Horizontal" Spacing="0">
+                    <Label Style="{StaticResource FA.solid.LabelStyle}" WidthRequest="20" Text="{StaticResource angleright}" Margin="10,5,0,0" HorizontalOptions="StartAndExpand" VerticalOptions="Center" TextColor="Black" Rotation="180" />
+                    <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource Regularfont}" Text="عفوا" FontSize="20" VerticalOptions="StartAndExpand" Margin="0,0,10,0" HorizontalOptions="EndAndExpand" TextColor="{StaticResource graycolor}" />
+                </StackLayout>
+                <BoxView Style="{StaticResource lineBoxView}" />
+                <StackLayout Orientation="Horizontal" Spacing="0">
+                    <Label Style="{StaticResource FA.solid.LabelStyle}" WidthRequest="20" Text="{StaticResource angleright}" Margin="10,5,0,0" HorizontalOptions="StartAndExpand" VerticalOptions="Center" TextColor="Black" Rotation="180" />
+                    <Label Style="{StaticResource Boldlable}" FontFamily="{StaticResource Regularfont}" Text="تأجيل" FontSize="20" VerticalOptions="StartAndExpand" Margin="0,0,10,0" HorizontalOptions="EndAndExpand" TextColor="{StaticResource graycolor}" />
+                </StackLayout>
+
+            </StackLayout>-->
+        </StackLayout>
+        <!--#endregion-->
+    </ContentPage.Content>
+</ContentPage>

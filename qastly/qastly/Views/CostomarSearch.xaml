@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="qastly.Views.CostomarSearch"                                           
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:vm="clr-namespace:qastly.ViewModels"             
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource PageBackGroundColor}"
+             x:Name="Page">
+    <!--<ContentPage.BindingContext>
+        <vm:MainViewModel/>
+    </ContentPage.BindingContext>-->
+    <ContentPage.Content>
+        <!--#region Content StackLayout  -->
+        <Grid Style="{StaticResource grid3Row}">
+            <!--#region nav bar  -->
+            <StackLayout Grid.Row="0" Style="{StaticResource HeaderStackLayout}" Spacing="0" Padding="0" Margin="0,0,0,2">
+                <!--<Button Style="{StaticResource FA.solid.ButtonStyle}" Text=" " HorizontalOptions="StartAndExpand"  FontSize="23" Margin="5,0,15,0"  Command="{Binding Nav_To_Search_Command}"/>-->
+                <SearchBar x:Name="CostomarSearchBar"  Placeholder="أبحث هنا ............." PlaceholderColor="#ddd"  HorizontalOptions="StartAndExpand"  FontSize="23" Margin="0,0,0,0" TextColor="#fff" TextChanged="CostomarSearchBar_TextChanged" />
+                <Button Style="{StaticResource FA.solid.ButtonStyle}" Text="{StaticResource  arrowleft}" HorizontalOptions="End"  FontSize="23" Margin="0,0,15,0" TextColor="Black" Command="{Binding Nav_To_InquiryPage_Command}" Rotation="180"/>
+                <!--<Label Style="{StaticResource Headerlable}" FontFamily="{StaticResource Regularfont}" Text="ابحث"  HorizontalOptions="End" Margin="0,0,20,0"/>-->
+
+            </StackLayout>
+            <!--#endregion-->
+
+            <!--#region list view   -->
+            <ScrollView  Grid.Row="1">
+                <!--Start list view-->
+                <StackLayout>
+
+                    <syncfusion:SfListView x:Name="CostomarListView" ItemsSource="{Binding Costomar}"  ItemSize="95"   Margin="10" ItemSpacing="3"  >
+                    <syncfusion:SfListView.ItemTemplate  >
+                        <DataTemplate>
+                            <ViewCell >
+
+                                <StackLayout VerticalOptions="StartAndExpand" >
+                                    <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer  Command="{Binding Path=BindingContext.costomarSearchItemTappedComand, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                                    </StackLayout.GestureRecognizers>
+                                    <border:SfBorder BorderColor="#DCD8D8" BorderWidth="1" HeightRequest="95"  Margin="0,0"  >
+                                        <StackLayout Spacing="0" BackgroundColor="#fff">
+
+                                            <StackLayout VerticalOptions="Center" Orientation="Horizontal" Margin="0,0,17,0" Padding="0,5,0,0">
+
+                                                <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Start" Margin="15,10,0,0">
+                                                        <Label Style="{StaticResource listViewPriceLabel}" Text="{Binding IDnum}" TextColor="#5272C5" FontSize="20" HorizontalOptions="End" Margin="0,10,7,0"/>
+                                                        <!--<Label Style="{StaticResource  Boldlable}" TextColor="Black" Text="{Binding IDnum}" FontSize="22" VerticalOptions="Start" HorizontalOptions="End" FontFamily="{StaticResource lightfont}"/>-->
+                                                        <!--<Label Style="{StaticResource FA.solid.LabelStyle}" Text="{StaticResource phone}" VerticalOptions="Start" TextColor="#333030"  WidthRequest="25" FontSize="22" Rotation="90"/>-->
+                                                </StackLayout>
+
+                                                <StackLayout  Style="{StaticResource contanerStartStackLayout}"  VerticalOptions="Start" Margin="0,5,0,0" HorizontalOptions="End" Spacing="0">
+                                                <Label Style="{StaticResource  Boldlable}" TextColor="Black" Text="{Binding name}" FontSize="22" VerticalOptions="Start" HorizontalOptions="End" FontFamily="{StaticResource lightfont}"/>
+                                                        <Label Style="{StaticResource listViewPriceLabel}" Text="{Binding phone1}" TextColor="#5272C5" FontSize="20" HorizontalOptions="End" Margin="0,0,7,0"/>
+                                                        <!--<Label Style="{StaticResource  Boldlable}" TextColor="Black" Text="{Binding phone1}" FontSize="22" VerticalOptions="Start" HorizontalOptions="End" FontFamily="{StaticResource lightfont}"/>-->
+                                                        
+                                                        
+                                                </StackLayout>
+                                                    
+                                                </StackLayout>
+                                                <!--<BoxView Style="{StaticResource lineBoxView}" Margin="0,0,0,10" />
+                                                <Button  x:Name="Nav_To_CostomarSearch" Style="{StaticResource productsIconButton}"   Text="أختر عميل"  VerticalOptions="Center"  WidthRequest="270" HeightRequest="30" FontSize="15" HorizontalOptions="Center" Command="{Binding Nav_To_CostomarSearch_Command}" />-->
+                                            </StackLayout>
+
+
+                                    </border:SfBorder>
+
+
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </syncfusion:SfListView.ItemTemplate>
+                </syncfusion:SfListView>
+                </StackLayout>
+                <!--End list view-->
+
+            </ScrollView>
+
+            <Button Grid.Row="2" x:Name="CheckoutBtn" Style="{StaticResource bigButton}"  FontFamily="{StaticResource lightfont}"  Text="إنشاء عميل" FontSize="20" Margin="0,0,0,0"  BackgroundColor="#3D72FF" Command="{Binding Nav_To_CreateCostomarTwo_Command}"/>
+            
+
+        </Grid>
+        <!--#endregion-->
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage x:Class="qastly.Views.PayInstalment"
+                 xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 xmlns:vm="clr-namespace:qastly.ViewModels">
+
+    <ContentPage.BindingContext>
+        <vm:MainViewModel/>
+    </ContentPage.BindingContext>
+
+    <!--  You can set an animation in the xaml file or in the csharp code behind  -->
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation DurationIn="400" DurationOut="300"  EasingIn="SinOut" EasingOut="SinIn" HasBackgroundAnimation="True" PositionIn="Center" PositionOut="Center" ScaleIn="1.2" ScaleOut="0.8" />
+    </pages:PopupPage.Animation>
+    <!--  You can use any elements here which are extended from Xamarin.Forms.View  -->
+    <StackLayout  HorizontalOptions="Center" VerticalOptions="Center"> 
+        <!--دفع القسط زراير-->
+
+        <Frame x:Name="pay_installment_BTN_Frame" CornerRadius="15" Margin="12" Padding="24" BackgroundColor="White" HorizontalOptions="Center" VerticalOptions="Center">
+
+
+            <StackLayout  HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Style="{StaticResource Smalllable}" FontFamily="{StaticResource lightfont}"  Text="دفع قسط " FontSize="17" TextColor="#3B3B3B" Margin="0,0,0,0"/>
+                <BoxView Style="{StaticResource lineBoxView}" HorizontalOptions="Center" WidthRequest="75"  HeightRequest="2" Color="#3B3B3B" Margin="0,0,0,15"/>
+
+                <Button x:Name="pay_full_installment_BTN" Style="{StaticResource mediumButton}" Margin="0,20,0,0" Text="دفع القسط بالكامل " FontSize="18" Clicked="pay_full_installment_BTN_Clicked"/>
+                <Button x:Name="pay_part_installment_BTN" Style="{StaticResource mediumButton}" Margin="0,20,0,0" Text="دفع مبلغ من القسط" FontSize="18" Clicked="pay_part_installment_BTN_Clicked"/>
+            </StackLayout>
+        </Frame>
+
+        <!--دفع القسط-->
+        <Frame x:Name="pay_installment_Entry_Frame" IsVisible="False" CornerRadius="15" Margin="12" Padding="24" BackgroundColor="White" HorizontalOptions="Center" VerticalOptions="Center">
+
+            <StackLayout  HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Style="{StaticResource Smalllable}" FontFamily="{StaticResource lightfont}"  Text="المبلغ المستحق" FontSize="17" TextColor="#3B3B3B" Margin="0,0,0,0"/>
+                <BoxView Style="{StaticResource lineBoxView}" HorizontalOptions="Center" WidthRequest="75"  HeightRequest="2" Color="#3B3B3B" Margin="0,0,0,15"/>
+                <Label Style="{StaticResource Smalllable}" FontFamily="{StaticResource lightfont}"  Text="{Binding Dital_Deal_Data.installment_amount}" FontSize="17" TextColor="#3B3B3B" Margin="0,0,0,0"/>
+
+                <StackLayout>
+                    <Label Text="المبلغ" HorizontalOptions="End" />
+                    <Entry x:Name="pay_full_installment_Entry" FontSize="20" Keyboard="Telephone"  Text="{Binding Dital_Deal_Data.installment_amount}" IsVisible="False"  IsEnabled="False"/>
+                    <Entry x:Name="pay_part_installment_Entry" FontSize="20" Keyboard="Telephone"  Text="{Binding pay_part_installment_VM ,Mode=TwoWay}" IsVisible="{Binding pay_part_installment_Entry_IsVisible ,Mode=TwoWay}" />
+                </StackLayout>
+
+                <DatePicker IsVisible="False" x:Name="DateePicker"  HorizontalOptions="Center" TextColor="White" BackgroundColor="#3D72FF" DateSelected="DatePicker_DateSelected" />
+                <Button x:Name="DateePickerbtn" Style="{StaticResource mediumButton}"   Margin="0,20,0,0" Text="{Binding payInstallmentDate_picker,StringFormat='{0:yyyy/MM/dd}',Mode=TwoWay}" FontSize="18" Clicked="DateePickerbtn_Clicked" />
+
+
+                <Button Style="{StaticResource mediumButton}" Margin="0,20,0,0" Text="إنشاء" FontSize="18" Command="{Binding Pay_installment_Command}" />
+                <Button x:Name="Back_BTN" Style="{StaticResource mediumButton}" Margin="0,20,0,0" Text="رجوع" FontSize="18" Clicked="Back_BTN_Clicked" />
+            </StackLayout>
+        </Frame>
+
+
+    </StackLayout>
+    
+    
+
+
+
+
+
+</pages:PopupPage>

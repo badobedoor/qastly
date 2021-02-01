@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:gradient ="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+                          xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:vm="clr-namespace:qastly.ViewModels"
+             mc:Ignorable="d"
+             x:Class="qastly.Views.InquiryPage"
+                x:Name="Page"
+             NavigationPage.HasNavigationBar="False">
+    <!--<ContentPage.BindingContext>
+        <vm:MainViewModel/>
+    </ContentPage.BindingContext>-->
+    <ContentPage.Content>
+        
+        <!--#region Content StackLayout  -->
+        <Grid Style="{StaticResource grid3Row}" BackgroundColor="#fff">
+            <!--#region nav bar  -->
+            <StackLayout Grid.Row="0" Style="{StaticResource HeaderStackLayout}" Spacing="0" Padding="0" Margin="0,0,0,2">
+                <Button Style="{StaticResource FA.solid.ButtonStyle}" Text="{StaticResource  Search}" HorizontalOptions="StartAndExpand"  FontSize="23" Margin="5,0,15,0"  Command="{Binding Nav_To_Search_Command}"/>
+                <Label Style="{StaticResource Headerlable}" FontFamily="{StaticResource Regularfont}" Text="إستعلام"  HorizontalOptions="End" Margin="0,0,20,0"/>
+            </StackLayout>
+            <!--#endregion-->
+
+
+            <!--#region Center Content  -->
+            <ScrollView Grid.Row="1">
+                <StackLayout Padding="0" Spacing="10" VerticalOptions="FillAndExpand" HorizontalOptions="Fill" >
+                    <Button x:Name="bt" Style="{StaticResource mediumButton}" HorizontalOptions="End" WidthRequest="100" Margin="0,10,10,60" Clicked="Button_Clicked"/>
+
+                    <Picker IsVisible="False" x:Name="monthpicker" SelectedIndexChanged="monthpicker_SelectedIndexChanged"/>
+                    <Picker IsVisible="False" x:Name="Grouppicker"  HorizontalOptions="End"  BackgroundColor="{StaticResource Bluecolor}"  Title="أختر المجموعه"  ItemsSource="{Binding Listgroup}"  ItemDisplayBinding="{Binding name}"  TitleColor="#fff" FontSize="15" FontFamily="{StaticResource lightfont}"   TextColor="#fff" WidthRequest="100" Margin="0,10,10,60" SelectedIndexChanged="mainpicker_SelectedIndexChanged" />
+                    <Label x:Name="lable_group_id" IsVisible="False"/>
+                    <Label x:Name="lable_qast" IsVisible="False"/>
+                    <Label x:Name="lable_Total_installment" IsVisible="False"/>
+                    <Label x:Name="lable_Pons_installment" IsVisible="False"/>
+                    <Label x:Name="lable_remainder" IsVisible="False"/>
+                    <!--<Picker IsVisible="False" x:Name="Grouppicker"  HorizontalOptions="End"  BackgroundColor="{StaticResource Bluecolor}" Title="المجموعه" TitleColor="#fff" FontSize="15" FontFamily="{StaticResource lightfont}"   TextColor="#fff" WidthRequest="100" Margin="0,10,10,60" SelectedIndexChanged="mainpicker_SelectedIndexChanged" />-->
+
+
+                    <inputLayout:SfTextInputLayout  Hint=" أدخل ثمن السلعه  "  ContainerType="Outlined" FocusedColor="#123696" UnfocusedColor="#616161"  Margin="30,0,30,0" FlowDirection="RightToLeft" WidthRequest="250"  HorizontalOptions="Center" >
+                        <inputLayout:SfTextInputLayout.HintLabelStyle>
+                            <inputLayout:LabelStyle FontSize="16" FontFamily="{StaticResource Key=lightfont}"/>
+                        </inputLayout:SfTextInputLayout.HintLabelStyle>
+
+                        <Entry x:Name="price" TextColor="#000"  HorizontalTextAlignment="End" Keyboard="Numeric"/>
+
+                    </inputLayout:SfTextInputLayout>
+                    <!--End  Grid Entry username-->
+
+                    <!--start Grid Entry username  -->
+
+                    <inputLayout:SfTextInputLayout  Hint="  أدخل ثمن المقدم "  ContainerType="Outlined" FocusedColor="#123696" UnfocusedColor="#616161"  Margin="30,0,30,0" FlowDirection="RightToLeft" WidthRequest="250" HorizontalOptions="Center"  >
+                        <inputLayout:SfTextInputLayout.HintLabelStyle>
+                            <inputLayout:LabelStyle FontSize="16" FontFamily="{StaticResource Key=lightfont}" />
+                        </inputLayout:SfTextInputLayout.HintLabelStyle>
+                        <Entry x:Name="pary" TextColor="#000"  HorizontalTextAlignment="End" Keyboard="Numeric"/>
+                        <!--<Entry TextColor="#000" Text="{Binding Email, Mode=TwoWay}"  HorizontalTextAlignment="Center" Keyboard="Numeric"/>-->
+
+                    </inputLayout:SfTextInputLayout>
+
+                    <!--End  Grid Entry username-->
+
+                    <Button x:Name="monthBt"  Style="{StaticResource mediumButton}" Clicked="monthBt_Clicked"/>
+                    <Button x:Name="Totalinstallment" Text="الاجمالى"  Style="{StaticResource mediumButton}" Clicked="Totalinstallment_Clicked"/>
+                    <Button x:Name="Ponsinstallment" Text=" الفرق"  Style="{StaticResource mediumButton}" Clicked="Ponsinstallment_Clicked"/>
+                    <Label x:Name="msg"  FontSize="100" Text="0" TextColor="Black" HorizontalOptions="Center" Margin="0,20,0,0"/>
+
+
+                </StackLayout>
+            </ScrollView>
+         
+            <!--#endregion-->
+
+            <!--#region foter navigation -->
+            <StackLayout Grid.Row="2" Spacing="0">
+                <Button x:Name="Nav_To_CreateDeal" Style="{StaticResource bigButton}"  FontFamily="{StaticResource lightfont}"  Text="إتمام الصفقة" FontSize="20" Margin="0,0,0,0"  BackgroundColor="#3D72FF" Command="{Binding nav_to_Creat_Deal_page}"/>
+                <BoxView Style="{StaticResource lineBoxView}" HorizontalOptions="Fill"   />
+                <Grid   Style="{StaticResource gridFoter}" BackgroundColor="#fff">
+
+
+                    <StackLayout Grid.Column="0" HorizontalOptions="Start" Spacing="0" >
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer  Command="{Binding Path=BindingContext.Nav_To_Management_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                        </StackLayout.GestureRecognizers>
+                        <Label Style="{StaticResource FA.solid.LabelStyle.homeIcon}" Text="{StaticResource  cogs}" Margin="17,0,0,0" TextColor="{Binding Management_icon_color}" />
+                        <Label Text="الإدارة" Style="{StaticResource LabelStyle.homeText}"  TextColor="{Binding Management_icon_color}" FontFamily="{StaticResource lightfont}"/>
+                    </StackLayout>
+
+                    <StackLayout  Grid.Column="1"  Spacing="0">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer  Command="{Binding Path=BindingContext.Nav_To_costomares_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                        </StackLayout.GestureRecognizers>
+                        <Label Style="{StaticResource FA.solid.LabelStyle.homeIcon}"  Text="{StaticResource  users}" Margin="17,0,0,0" TextColor="{Binding costomares_icon_color}" />
+                        <Label Text="العملاء"  Style="{StaticResource LabelStyle.homeText}"  TextColor="{Binding costomares_icon_color}" FontFamily="{StaticResource lightfont}"/>
+                    </StackLayout >
+
+                    <Frame    IsEnabled="False"  Grid.Column="2" HeightRequest="50" WidthRequest="50" CornerRadius="30" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,-5,0,0" Padding="0" BackgroundColor="{Binding InquiryPage_icon_color}">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer  Command="{Binding Path=BindingContext.Nav_To_InquiryPage_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                        </Frame.GestureRecognizers>
+                        <Label Text="+" FontSize="25" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                    </Frame>
+
+                    <StackLayout Grid.Column="3" Spacing="0" Margin="0,0,-10,0" >
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer  Command="{Binding Path=BindingContext.Nav_To_Group_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                        </StackLayout.GestureRecognizers>
+                        <Label Style="{StaticResource FA.solid.LabelStyle.homeIcon}" Text="{StaticResource  listtt}" TextColor="{Binding Group_icon_color}" />
+                        <Label Text="المجموعات"  Style="{StaticResource LabelStyle.homeText}" TextColor="{Binding Group_icon_color}" FontFamily="{StaticResource lightfont}"/>
+                    </StackLayout>
+
+                    <StackLayout  Grid.Column="4"  HorizontalOptions="End" Margin="0,0,0,0"  Spacing="0">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer  Command="{Binding Path=BindingContext.Nav_To_installment_Command, Source={x:Reference Page}}" CommandParameter="{Binding .}"   />
+                        </StackLayout.GestureRecognizers>
+                        <Label Style="{StaticResource FA.solid.LabelStyle.homeIcon}" Text="{StaticResource  data}" TextColor="{Binding installment_icon_color}" Margin="25,0,0,0" />
+                        <Label Text="الأقساط"  Style="{StaticResource LabelStyle.homeText}" TextColor="{Binding installment_icon_color}" FontFamily="{StaticResource lightfont}"/>
+                    </StackLayout>
+
+
+                </Grid>
+            </StackLayout>
+
+
+            <!--#endregion-->
+
+        </Grid>
+        <!--#endregion-->
+
+
+    </ContentPage.Content>
+</ContentPage>

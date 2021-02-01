@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage  x:Class="qastly.Views.CreatemoneyTransfer"
+                xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+                xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                xmlns:vm="clr-namespace:qastly.ViewModels"
+                x:Name="Page">
+    <ContentPage.BindingContext>
+        <vm:MainViewModel/>
+    </ContentPage.BindingContext>
+
+    <!--  You can set an animation in the xaml file or in the csharp code behind  -->
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation DurationIn="400" DurationOut="300"  EasingIn="SinOut" EasingOut="SinIn" HasBackgroundAnimation="True" PositionIn="Center" PositionOut="Center" ScaleIn="1.2" ScaleOut="0.8" />
+    </pages:PopupPage.Animation>
+
+    <!--  You can use any elements here which are extended from Xamarin.Forms.View  -->
+    <Frame CornerRadius="15" Margin="12" Padding="24" BackgroundColor="White" HorizontalOptions="Center" VerticalOptions="Center">
+
+        <StackLayout  HorizontalOptions="Center" VerticalOptions="Center">
+
+
+            <Picker IsVisible="False" x:Name="Fundspicker_one"  Title="أختر الحساب الاول"  ItemsSource="{Binding Funds}" SelectedIndexChanged="Fundspicker_one_SelectedIndexChanged"  ItemDisplayBinding="{Binding name}" />
+            <Picker IsVisible="False" x:Name="Fundspicker_Two"  Title="أختر الحساب الثانى"  ItemsSource="{Binding Funds}" SelectedIndexChanged="Fundspicker_Two_SelectedIndexChanged"  ItemDisplayBinding="{Binding name}" />
+            <DatePicker IsVisible="False" x:Name="DateePicker"  HorizontalOptions="Center" TextColor="White" BackgroundColor="#3D72FF" DateSelected="DatePicker_DateSelected" />
+            <Label Style="{StaticResource Smalllable}" FontFamily="{StaticResource lightfont}"  Text="تحويل مبلغ " FontSize="17" TextColor="#3B3B3B" Margin="0,0,0,0"/>
+            <BoxView Style="{StaticResource lineBoxView}" HorizontalOptions="Center" WidthRequest="75"  HeightRequest="2" Color="#3B3B3B" Margin="0,0,0,15"/>
+            
+            <StackLayout Orientation="Horizontal" Margin="0,0,0,15">
+                <StackLayout>
+                    <Label Text="إلى" HorizontalOptions="Center" />
+                    <Button x:Name="Fundspickerbtn_Two" Style="{StaticResource mediumButton}" WidthRequest="150"  HorizontalOptions="End" Margin="0,20,0,0" Text="{Binding FundsItemSlect_Two,Mode=TwoWay}" FontSize="18" Clicked="Fundspickerbtn_Two_Clicked" />
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="من" HorizontalOptions="Center" />
+                    <Button x:Name="Fundspickerbtn_one" Style="{StaticResource mediumButton}" WidthRequest="150"  HorizontalOptions="End" Margin="0,20,0,0" Text="{Binding FundsItemSlect_one,Mode=TwoWay}" FontSize="18" Clicked="Fundspickerbtn_one_Clicked" />
+                    
+                </StackLayout>
+            </StackLayout>
+
+
+            <StackLayout>
+                <Label Text="المبلغ" HorizontalOptions="End" />
+                <Entry FontSize="20" Keyboard="Telephone"  Text="{Binding moneyTransfer_amount ,Mode=TwoWay}" />
+            </StackLayout>
+            <StackLayout >
+                <Label Text="ملاحظات" HorizontalOptions="End"/>
+                <Editor  HeightRequest="100"  Text="{Binding moneyTransfer_Note ,Mode=TwoWay}" />
+            </StackLayout>
+
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button x:Name="DateePickerbtn" Style="{StaticResource mediumButton}"  HorizontalOptions="FillAndExpand"  Margin="0,20,0,0" Text="{Binding MoneyTransferDate_picker,StringFormat='{0:yyyy/MM/dd}',Mode=TwoWay}" FontSize="18" Clicked="DateePickerbtn_Clicked" />
+            </StackLayout>
+
+            <Button Style="{StaticResource mediumButton}"   HorizontalOptions="FillAndExpand"  Margin="0,20,0,0" Text="إنشاء" FontSize="18" Command="{Binding PostCapitalmoneyTransferComand}"/>
+        </StackLayout>
+    </Frame>
+
+</pages:PopupPage>

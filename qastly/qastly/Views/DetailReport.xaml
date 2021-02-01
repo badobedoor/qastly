@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+                          xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:vm="clr-namespace:qastly.ViewModels"
+             NavigationPage.HasNavigationBar="False"
+             mc:Ignorable="d"
+             x:Class="qastly.Views.DetailReport"
+             x:Name="Page">
+    <ContentPage.BindingContext>
+        <vm:MainViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <!--#region general stacklayout-->
+        <StackLayout Spacing="0" >
+            <!--#region Content stacklayout-->
+            <StackLayout Spacing="0" VerticalOptions="StartAndExpand" >
+                <!--#region nav bar -->
+                <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="EndAndExpand" HeightRequest="50" >
+                    <Button Style="{StaticResource FA.solid.ButtonStyle}" Text="{StaticResource  arrowleft}" TextColor="#000" HorizontalOptions="End"  FontSize="23" Margin="0,0,5,0"  Command="{Binding Nav_To_lastPage_Command}" Rotation="180"/>
+                </StackLayout>
+                <!--#endregion-->
+
+
+                <!--#region center Content  -->
+                <ScrollView >
+                    <StackLayout>
+                        <!--#region heder lable -->
+                        <StackLayout >
+                            <Label Style="{StaticResource Smalllable}" FontFamily="{StaticResource lightfont}" Text="قسـطـلى"  FontSize="45" Margin="0,0,0,10" TextColor="#3B3B3B"/>
+                            <BoxView Style="{StaticResource lineBoxView}" HorizontalOptions="Center" WidthRequest="130"  HeightRequest="2" Color="#3B3B3B" Margin="0,-15,0,0"/>
+                            <Label Style="{StaticResource Smalllable}" FontFamily="{StaticResource lightfont}"  Text="تقرير مفصل للعميل" FontSize="17" TextColor="#3B3B3B" Margin="0,0,0,0"/>
+                        </StackLayout>
+                        <!--#endregion-->
+                                                
+                        <!--#region Entry Content  -->
+                        <StackLayout VerticalOptions="Center" Spacing="0" HorizontalOptions="Fill" >
+                            <StackLayout Spacing="15"  BackgroundColor="#fff" Margin="20,0" Padding="0,10">
+
+                                <Label x:Name="deal_id_lable" IsVisible="False" Style="{StaticResource Reportlabletwo}" Text="{Binding Dital_Deal_Data.deal_id}"/>
+
+                                <StackLayout Margin="0,0,0,0" Spacing="0" VerticalOptions="Center">
+                                        <StackLayout Style="{StaticResource ReportStackLayout}">
+                                        <Label x:Name="name_Lable" Style="{StaticResource Reportlabletwo}" Text="{Binding Dital_Deal_Data.name}" />
+                                        <Label Style="{StaticResource Reportlable}" Text="أسم العميل" />
+                                        </StackLayout>
+                                        <BoxView Style="{StaticResource lineBoxView}"  Color="Black" Margin="25,0,25,0"/>
+                                    </StackLayout>
+
+                                    <StackLayout Margin="0,0,0,0" Spacing="0" VerticalOptions="Center">
+                                        <StackLayout Style="{StaticResource ReportStackLayout}">
+                                        <Label x:Name="phone1_Lable" Style="{StaticResource Reportlabletwo}" Text="{Binding Dital_Deal_Data.phone1}" />
+                                            <Label Style="{StaticResource Reportlable}" Text="رقم هاتف العميل" />
+                                        </StackLayout>
+                                        <BoxView Style="{StaticResource lineBoxView}"  Color="Black" Margin="25,0,25,0"/>
+                                    </StackLayout>
+
+                                    <StackLayout Margin="0,0,0,0" Spacing="0" VerticalOptions="Center">
+                                        <StackLayout Style="{StaticResource ReportStackLayout}">
+                                        <Label x:Name="IDnum_Lable" Style="{StaticResource Reportlabletwo}" Text="{Binding Dital_Deal_Data.IDnum}" />
+                                            <Label Style="{StaticResource Reportlable}" Text="رقم بطاقه العميل" />
+                                        </StackLayout>
+                                        <BoxView Style="{StaticResource lineBoxView}"  Color="Black" Margin="25,0,25,0"/>
+                                    </StackLayout>
+
+
+                                <StackLayout Margin="0,0,0,0" Spacing="0" VerticalOptions="Center">
+                                        <StackLayout Style="{StaticResource ReportStackLayout}">
+                                        <Label x:Name="product_Name_Lable" Style="{StaticResource Reportlabletwo}" Text="{Binding Dital_Deal_Data.product_Name}"/>
+                                        <Label Style="{StaticResource Reportlable}" Text="اسم المنتج"/>
+                                        </StackLayout>
+                                        <BoxView Style="{StaticResource lineBoxView}"  Color="Black" Margin="25,0,25,0"/>
+                                    </StackLayout>
+
+
+                                  
+                                    <StackLayout Margin="0,0,0,0" Spacing="0" VerticalOptions="Center">
+                                        <StackLayout Style="{StaticResource ReportStackLayout}">
+                                        <Label  x:Name="product_Price_Lable" Style="{StaticResource Reportlabletwo}" Text="{Binding Dital_Deal_Data.product_Price}"/>
+                                        <Label Style="{StaticResource Reportlable}" Text="سعر المنتج"/>
+                                        </StackLayout>
+                                        <BoxView Style="{StaticResource lineBoxView}"  Color="Black" Margin="25,0,25,0"/>
+                                    </StackLayout>
+
+
+                                    
+                                    <StackLayout Margin="0,0,0,0" Spacing="0" VerticalOptions="Center">
+                                        <StackLayout Style="{StaticResource ReportStackLayout}">
+                                        <Label x:Name="product_given_Lable" Style="{StaticResource Reportlabletwo}" Text="{Binding Dital_Deal_Data.product_given}"/>
+                                        <Label Style="{StaticResource Reportlable}" Text="المقدم"/>
+                                        </StackLayout>
+                                        <BoxView Style="{StaticResource lineBoxView}"  Color="Black" Margin="25,0,25,0"/>
+                                    </StackLayout>
+
+                                  
+                                    <StackLayout Margin="0,0,0,0" Spacing="0" VerticalOptions="Center">
+                                        <StackLayout Style="{StaticResource ReportStackLayout}">
+                                        <Label x:Name="Start_Date_Lable" Style="{StaticResource Reportlabletwo}" Text="{Binding Dital_Deal_Data.Start_Date,StringFormat='{0:yyyy/MM/dd}'}"/>
+                                        <Label Style="{StaticResource Reportlable}" Text="تاريخ بدايه التقسيط   "/>
+                                        </StackLayout>
+                                        <BoxView Style="{StaticResource lineBoxView}"  Color="Black" Margin="25,0,25,0"/>
+                                    </StackLayout>
+
+                                   
+                                    <StackLayout Margin="0,0,0,0" Spacing="0" VerticalOptions="Center">
+                                        <StackLayout Style="{StaticResource ReportStackLayout}">
+                                        <Label x:Name="selcet_month_lable" Style="{StaticResource Reportlabletwo}" Text="{Binding Dital_Deal_Data.selcet_month}"/>
+                                        <Label Style="{StaticResource Reportlable}" Text=" مده التقسيط"/>
+                                        </StackLayout>
+                                        <BoxView Style="{StaticResource lineBoxView}"  Color="Black" Margin="25,0,25,0"/>
+                                    </StackLayout>
+
+                                  
+                                    <StackLayout Margin="0,0,0,0" Spacing="0" VerticalOptions="Center">
+                                        <StackLayout Style="{StaticResource ReportStackLayout}">
+                                        <Label x:Name="installment_amount_Lable" Style="{StaticResource Reportlabletwo}" Text="{Binding Dital_Deal_Data.installment_amount}"/>
+                                        <Label Style="{StaticResource Reportlable}" Text="القسط الشهري"/>
+                                        </StackLayout>
+                                        <BoxView Style="{StaticResource lineBoxView}"  Color="Black" Margin="25,0,25,0"/>
+                                    </StackLayout>
+
+                                    
+                                    <StackLayout Margin="0,0,0,0" Spacing="0" VerticalOptions="Center">
+                                        <StackLayout Style="{StaticResource ReportStackLayout}">
+                                        <Label x:Name="paid_installments_lable" Style="{StaticResource Reportlabletwo}" Text="{Binding Dital_Deal_Data.paid_installments}"/>
+                                        <Label Style="{StaticResource Reportlable}" Text="عدد الاقساط المدفوعه"/>
+                                        </StackLayout>
+                                        <BoxView Style="{StaticResource lineBoxView}"  Color="Black" Margin="25,0,25,0"/>
+                                    </StackLayout>
+
+                                
+                                <StackLayout Margin="0,0,0,0" Spacing="0" VerticalOptions="Center">
+                                    <StackLayout Style="{StaticResource ReportStackLayout}">
+                                        <Label x:Name="remaining_installments_Lable" Style="{StaticResource Reportlabletwo}" Text="{Binding Dital_Deal_Data.remaining_installments}"/>
+                                        <Label Style="{StaticResource Reportlable}" Text="عدد الاقساط المتبقية"/>
+                                    </StackLayout>
+                                    <BoxView Style="{StaticResource lineBoxView}"  Color="Black" Margin="25,0,25,0"/>
+                                </StackLayout>
+
+
+                         
+                                <StackLayout Margin="0,0,0,0" Spacing="0" VerticalOptions="Center">
+                                    <StackLayout Style="{StaticResource ReportStackLayout}">
+                                        <Label x:Name="Total_Paid_lable" Style="{StaticResource Reportlabletwo}" Text="{Binding Dital_Deal_Data.Total_Paid}"/>
+                                        <Label Style="{StaticResource Reportlable}" Text="المبلغ المدفوع"/>
+                                    </StackLayout>
+                                    <BoxView Style="{StaticResource lineBoxView}"  Color="Black" Margin="25,0,25,0"/>
+                                </StackLayout>
+
+
+                        
+                                <StackLayout Margin="0,0,0,0" Spacing="0" VerticalOptions="Center">
+                                    <StackLayout Style="{StaticResource ReportStackLayout}">
+                                        <Label x:Name="Total_Remaining_Lable" Style="{StaticResource Reportlabletwo}" Text="{Binding Dital_Deal_Data.Total_Remaining}"/>
+                                        <Label Style="{StaticResource Reportlable}" Text="المبلغ المتبقى"/>
+                                    </StackLayout>
+                                    <BoxView Style="{StaticResource lineBoxView}"  Color="Black" Margin="25,0,25,0"/>
+                                </StackLayout>
+
+
+                               
+                                <StackLayout Margin="0,0,0,0" Spacing="0" VerticalOptions="Center">
+                                    <StackLayout Style="{StaticResource ReportStackLayout}">
+                                        <Label x:Name="remainder_lable" Style="{StaticResource Reportlabletwo}" Text="{Binding Dital_Deal_Data.remainder}"/>
+                                        <Label Style="{StaticResource Reportlable}" Text="المبلغ المقسط"/>
+                                    </StackLayout>
+                                    <BoxView Style="{StaticResource lineBoxView}"  Color="Black" Margin="25,0,25,0"/>
+                                </StackLayout>
+
+
+                                
+                                <StackLayout Margin="0,0,0,0" Spacing="0" VerticalOptions="Center">
+                                    <StackLayout Style="{StaticResource ReportStackLayout}">
+                                        <Label x:Name="Total_installment_Lable" Style="{StaticResource Reportlabletwo}" Text="{Binding Dital_Deal_Data.Total_installment}"/>
+                                        <Label Style="{StaticResource Reportlable}" Text="الاجمالى"/>
+                                    </StackLayout>
+                                </StackLayout>
+
+
+                                <StackLayout IsVisible="False" Margin="0,0,0,0" Spacing="0" VerticalOptions="Center">
+                                    <StackLayout Style="{StaticResource ReportStackLayout}">
+                                        <Label x:Name="group_id_lable" Style="{StaticResource Reportlabletwo}" Text="{Binding Dital_Deal_Data.group_id}"/>
+                                        <Label Style="{StaticResource Reportlable}" Text="الاجمالى"/>
+                                    </StackLayout>
+                                </StackLayout>
+
+
+
+                            </StackLayout>
+
+                            <Label Style="{StaticResource Smalllable}" FontFamily="{StaticResource lightfont}" Text="سجل الاقساط"  FontSize="25" Margin="0,10,0,10" TextColor="#3B3B3B"/>
+                            <Label Style="{StaticResource Smalllable}" FontFamily="{StaticResource lightfont}"  Text="{Binding  Dital_Deal_Data.installment_amount,StringFormat='$ {0}'}" FontSize="25" Margin="0,0,0,5" TextColor="#3B3B3B"/>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Style="{StaticResource Smalllable}" FontFamily="{StaticResource lightfont}" HorizontalOptions="StartAndExpand" Text="المبلغ  المدفوع " FontSize="18" Margin="20,0,20,5" TextColor="#3B3B3B"/>
+                                <Label Style="{StaticResource Smalllable}" FontFamily="{StaticResource lightfont}" HorizontalOptions="End" Text=" تاريخ  الدفع" FontSize="18" Margin="20,0,30,5" TextColor="#3B3B3B"/>
+                            </StackLayout>
+                            <ListView  ItemsSource="{Binding pay_installment_List}" HasUnevenRows="true" Margin="10" >
+                                <ListView.ItemTemplate  >
+                                    <DataTemplate>
+                                        <ViewCell >
+                                            <StackLayout VerticalOptions="StartAndExpand" Margin="10"  >
+                                                <border:SfBorder BorderColor="#DCD8D8" BorderWidth="1" HeightRequest="55"  Margin="0,0" CornerRadius="5" >
+                                                    <StackLayout Spacing="0" BackgroundColor="{Binding installmedntColor}">
+
+                                                        <StackLayout VerticalOptions="Center" Orientation="Horizontal" Margin="0,0,17,0" Padding="0,8,0,0">
+
+                                                            <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="15,0,0,0">
+                                                                <Label Style="{StaticResource  Boldlable}" TextColor="Black" Text="{Binding  Collectedvalue,StringFormat='$ {0}'}"  FontSize="22" VerticalOptions="Center"  FontFamily="{StaticResource lightfont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                                            </StackLayout>
+
+                                                            <StackLayout  Style="{StaticResource contanerStartStackLayout}"  VerticalOptions="Center" Margin="0,0,0,0" HorizontalOptions="End" BackgroundColor="Transparent">
+                                                                <Label Style="{StaticResource  Boldlable}" TextColor="Black" Text="{Binding InstallmentPaymentDate,StringFormat='{0:yyyy/MM/dd}'}" FontSize="22" VerticalOptions="Center" HorizontalOptions="End" FontFamily="{StaticResource lightfont}" BackgroundColor="Transparent"/>
+                                                            </StackLayout>
+
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                </border:SfBorder>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+
+                            <Label x:Name="MSG_lable" Style="{StaticResource Smalllable}" FontFamily="{StaticResource lightfont}" Text="{Binding Dital_Deal_Data.Total_Saved }"  FontSize="18" Margin="0,10,0,10" TextColor="#3B3B3B" IsVisible="False"/>
+                        </StackLayout>
+                            <!--#endregion-->                                                                   
+                    </StackLayout>
+                </ScrollView>
+
+                <!--#endregion-->
+            </StackLayout>
+            <!--#endregion-->
+
+            <!--#region Foter -->
+            <StackLayout VerticalOptions="Center"></StackLayout>
+            <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Center" >
+                <Button x:Name="shareBtn" Style="{StaticResource productsIconButton}"   Text="مشاركة"  FontSize="15" CornerRadius="10" VerticalOptions="Center"  WidthRequest="170" HeightRequest="40" HorizontalOptions="Center"  Clicked="shareBtn_Clicked"/>
+                <Button x:Name="update_deal_in_date_now"  Style="{StaticResource productsIconButton}"   Text="جدولة الصفقه "  FontSize="15"  VerticalOptions="Center"  CornerRadius="10" WidthRequest="170" HeightRequest="40" HorizontalOptions="Center"  Clicked="update_deal_in_date_now_Clicked"/>
+            </StackLayout>
+            <!--#endregion-->
+
+        </StackLayout>
+        <!--#endregion-->
+    </ContentPage.Content>
+    <!--#region Grid Comment  -->
+
+    
+    <!--<Grid VerticalOptions="Center" HorizontalOptions="CenterAndExpand"  BackgroundColor="WhiteSmoke" ColumnSpacing="0"  RowSpacing="6" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="140"/>
+        </Grid.ColumnDefinitions>
+        <Frame Style="{StaticResource ReportFrame}" Grid.Column="0" Grid.Row="0"   >
+            <Label Style="{StaticResource Reportlable}" Text="محمد احمد حسن" />
+        </Frame>
+        <Frame Style="{StaticResource ReportFrame}" Grid.Column="1" Grid.Row="0"  >
+            <Label Text="أسم العميل" Style="{StaticResource Reportlable}"/>
+        </Frame>
+        <Frame Style="{StaticResource ReportFrame}" Grid.Column="0" Grid.Row="1"  >
+            <Label Text="سامسونج s20" Style="{StaticResource Reportlable}"/>
+        </Frame>
+        <Frame Style="{StaticResource ReportFrame}" Grid.Column="1" Grid.Row="1"  >
+            <Label Text="اسم المنتج"  Style="{StaticResource Reportlable}"/>
+        </Frame>
+        <Frame Style="{StaticResource ReportFrame}" Grid.Column="0" Grid.Row="2"  >
+            <Label Text="5000"  Style="{StaticResource Reportlable}" />
+        </Frame>
+        <Frame Style="{StaticResource ReportFrame}" Grid.Column="1" Grid.Row="2"  >
+            <Label Text="سعر المنتج"  Style="{StaticResource Reportlable}"/>
+        </Frame>
+        <Frame Style="{StaticResource ReportFrame}" Grid.Column="0" Grid.Row="3"  >
+            <Label Text="7/7/2020"  Style="{StaticResource Reportlable}"/>
+        </Frame>
+        <Frame Style="{StaticResource ReportFrame}" Grid.Column="1" Grid.Row="3"  >
+            <Label Text="تاريخ بداية التعاقد"  Style="{StaticResource Reportlable}"/>
+        </Frame>
+        <Frame Style="{StaticResource ReportFrame}" Grid.Column="0" Grid.Row="4"  >
+            <Label Text="1000"  Style="{StaticResource Reportlable}"/>
+        </Frame>
+        <Frame Style="{StaticResource ReportFrame}" Grid.Column="1" Grid.Row="4"  >
+            <Label Text="المقدم"  Style="{StaticResource Reportlable}"/>
+        </Frame>
+        <Frame Style="{StaticResource ReportFrame}" Grid.Column="0" Grid.Row="5"  >
+            <Label Text="12"  Style="{StaticResource Reportlable}"/>
+        </Frame>
+        <Frame Style="{StaticResource ReportFrame}" Grid.Column="1" Grid.Row="5"  >
+            <Label Text="عدد شهور التقسيط"  Style="{StaticResource Reportlable}"/>
+        </Frame>
+        <Frame Style="{StaticResource ReportFrame}" Grid.Column="0" Grid.Row="6"  >
+            <Label Text="350"  Style="{StaticResource Reportlable}"/>
+        </Frame>
+        <Frame Style="{StaticResource ReportFrame}" Grid.Column="1" Grid.Row="6"  >
+            <Label Text="القسط الشهري"  Style="{StaticResource Reportlable}"/>
+        </Frame>
+        <Frame Style="{StaticResource ReportFrame}" Grid.Column="0" Grid.Row="7"  >
+            <Label Text="5"  Style="{StaticResource Reportlable}"/>
+        </Frame>
+        <Frame Style="{StaticResource ReportFrame}" Grid.Column="1" Grid.Row="7"  >
+            <Label Text="عدد الاقساط المدفوعه"  Style="{StaticResource Reportlable}"/>
+        </Frame>
+        <Frame Style="{StaticResource ReportFrame}" Grid.Column="0" Grid.Row="8"  >
+            <Label Text="7"  Style="{StaticResource Reportlable}"/>
+        </Frame>
+        <Frame Style="{StaticResource ReportFrame}" Grid.Column="1" Grid.Row="8"  >
+            <Label Text="عدد الاقساط المتبقية"  Style="{StaticResource Reportlable}" />
+        </Frame>
+        <Frame Style="{StaticResource ReportFrame}" Grid.Column="0" Grid.Row="9"  >
+            <Label Text="1750"  Style="{StaticResource Reportlable}"/>
+        </Frame>
+        <Frame Style="{StaticResource ReportFrame}" Grid.Column="1" Grid.Row="9"  >
+            <Label Text="المبلغ المدفوع"  Style="{StaticResource Reportlable}"/>
+        </Frame>
+        <Frame Style="{StaticResource ReportFrame}" Grid.Column="0" Grid.Row="10"  >
+            <Label Text="2500"  Style="{StaticResource Reportlable}"/>
+        </Frame>
+        <Frame Style="{StaticResource ReportFrame}" Grid.Column="1" Grid.Row="10"  >
+            <Label Text="المبلع المتلفى"  Style="{StaticResource Reportlable}" />
+        </Frame>
+
+        <Frame Style="{StaticResource ReportFrame}" Grid.Column="0" Grid.Row="11"  >
+            <Label Text="4500"  Style="{StaticResource Reportlable}"/>
+        </Frame>
+        <Frame Style="{StaticResource ReportFrame}" Grid.Column="1" Grid.Row="11"  >
+            <Label Text="المبلغ المقسط"  Style="{StaticResource Reportlable}"/>
+        </Frame>
+        <Frame Style="{StaticResource ReportFrame}" Grid.Column="0" Grid.Row="12"  >
+            <Label Text="5500"  Style="{StaticResource Reportlable}"/>
+        </Frame>
+        <Frame Style="{StaticResource ReportFrame}" Grid.Column="1" Grid.Row="12"  >
+            <Label Text="الاجماللى"  Style="{StaticResource Reportlable}"/>
+        </Frame>
+    </Grid>-->
+    <!--#endregion-->
+</ContentPage>
+    
+
+
+
+
+

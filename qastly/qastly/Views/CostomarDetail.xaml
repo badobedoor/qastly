@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:vm="clr-namespace:qastly.ViewModels"
+             NavigationPage.HasNavigationBar="False"
+             mc:Ignorable="d"
+             x:Class="qastly.Views.CostomarDetail"
+           x:Name="Page">             
+    <ContentPage.BindingContext>
+        <vm:MainViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+
+        <!--#region general stacklayout-->
+        <StackLayout Spacing="0" VerticalOptions="FillAndExpand">
+            <!--#region Content stacklayout-->
+            <ScrollView>
+                <StackLayout Spacing="0" VerticalOptions="FillAndExpand" >
+                    <!--#region nav bar -->
+                    <StackLayout Spacing="0" VerticalOptions="Start" >
+                        <Grid Style="{StaticResource gridOneRowOneColme}">
+                            <StackLayout Grid.Column="0" Grid.Row="0" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+                                <Image Source="seabackground.png" Aspect="AspectFit"/>
+                            </StackLayout>
+                            <StackLayout Style="{StaticResource HeaderStackLayout}" BackgroundColor="Transparent" Grid.Column="0" Grid.Row="0" >
+                                <Button Style="{StaticResource FA.solid.ButtonStyle}" Text="{StaticResource  Search}" TextColor="#374957" HorizontalOptions="StartAndExpand"  FontSize="23" Margin="5,0,15,0"  Command="{Binding Nav_To_Search_Command}"/>
+                                <Button Style="{StaticResource FA.solid.ButtonStyle}" Text="{StaticResource  arrowleft}" TextColor="#374957" HorizontalOptions="End"  FontSize="23" Margin="0,0,0,0"  Command="{Binding Nav_To_costomares_Command}" Rotation="180"/>
+                            </StackLayout>
+
+                            <Frame Grid.Column="0" Grid.Row="0" HeightRequest="90" WidthRequest="90" CornerRadius="50" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"  Margin="0,30,0,0" Padding="0" BackgroundColor="#fff">
+                                <Image Source="manger.png" Aspect="AspectFit" HeightRequest="60" WidthRequest="60" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            </Frame>
+
+                            <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="0" Grid.Row="0" Padding="0,100,0,0">
+                                <Label Style="{StaticResource Headerlable}" FontFamily="{StaticResource Regularfont}" Text="{Binding CostomarDital.name}" VerticalOptions="End" HorizontalOptions="Center" TextColor="#374957" Margin="0,0,0,0"/>
+                                <Button  Style="{StaticResource productsIconButton}"   Text="الصور" FontSize="18" VerticalOptions="Center"  WidthRequest="140" CornerRadius="20" HeightRequest="30" HorizontalOptions="Center" Command="{Binding Nav_To_CostomarDetailPhoto_Command}" />
+                            </StackLayout>
+
+                        </Grid>
+                    </StackLayout>
+                    <!--#endregion-->
+
+
+
+
+                    <!--#region Entry Content  -->
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Fill" Margin="0,0,0,40" >
+                        <ScrollView  Margin="0,50,0,0">
+                            <StackLayout Spacing="15">
+                                <!--Costomar Name-->
+                                <StackLayout Margin="0,0,0,0" Spacing="0" VerticalOptions="Center">
+                                    <StackLayout Spacing="40" Margin="0,0,25,10" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                        <Label FontFamily="{StaticResource Regularfont}" Text="{Binding CostomarDital.name}"/>
+                                        <Label FontFamily="{StaticResource Regularfont}" Text="أسم العميل"/>
+                                    </StackLayout>
+                                    <BoxView Style="{StaticResource lineBoxView}"  Color="Black" Margin="25,0,25,0"/>
+                                </StackLayout>
+
+                                <!--Costomar Name-->
+                                <StackLayout Margin="0,0,0,0" Spacing="0" VerticalOptions="Center">
+                                    <StackLayout Spacing="40" Margin="0,0,25,10" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                        <Label FontFamily="{StaticResource Regularfont}" Text="{Binding CostomarDital.phone1}"/>
+                                        <Label FontFamily="{StaticResource Regularfont}" Text="رقم العميل  1"/>
+                                    </StackLayout>
+                                    <BoxView Style="{StaticResource lineBoxView}"  Color="Black" Margin="25,0,25,0"/>
+                                </StackLayout>
+
+
+                                <!--Costomar Name-->
+                                <StackLayout Margin="0,0,0,0" Spacing="0" VerticalOptions="Center">
+                                    <StackLayout Spacing="40" Margin="0,0,25,10" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                        <Label FontFamily="{StaticResource Regularfont}" Text="{Binding CostomarDital.phone2}"/>
+                                        <Label FontFamily="{StaticResource Regularfont}" Text="رقم العميل 2"/>
+                                    </StackLayout>
+                                    <BoxView Style="{StaticResource lineBoxView}"  Color="Black" Margin="25,0,25,0"/>
+                                </StackLayout>
+
+
+                                <!--Costomar Name-->
+                                <StackLayout Margin="0,0,0,0" Spacing="0" VerticalOptions="Center">
+                                    <StackLayout Spacing="40" Margin="0,0,25,10" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                        <Label FontFamily="{StaticResource Regularfont}" Text="{Binding CostomarDital.phone3}"/>
+                                        <Label FontFamily="{StaticResource Regularfont}" Text="رقم العميل 3"/>
+                                    </StackLayout>
+                                    <BoxView Style="{StaticResource lineBoxView}"  Color="Black" Margin="25,0,25,0"/>
+                                </StackLayout>
+
+                                <!--Costomar Name-->
+                                <StackLayout Margin="0,0,0,0" Spacing="0" VerticalOptions="Center">
+                                    <StackLayout Spacing="40" Margin="0,0,25,10" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                        <Label FontFamily="{StaticResource Regularfont}" Text="{Binding CostomarDital.IDnum}"/>
+                                        <Label FontFamily="{StaticResource Regularfont}" Text="رقم البطاقة   "/>
+                                    </StackLayout>
+                                    <BoxView Style="{StaticResource lineBoxView}"  Color="Black" Margin="25,0,25,0"/>
+                                </StackLayout>
+
+                                <!--Costomar Name-->
+                                <StackLayout Margin="0,0,0,0" Spacing="0" VerticalOptions="Center">
+                                    <StackLayout Spacing="40" Margin="0,0,25,10" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                        <Label FontFamily="{StaticResource Regularfont}" Text="{Binding CostomarDital.address}"/>
+                                        <Label FontFamily="{StaticResource Regularfont}" Text=" عنوان العميل"/>
+                                    </StackLayout>
+                                    <BoxView Style="{StaticResource lineBoxView}"  Color="Black" Margin="25,0,25,0"/>
+                                </StackLayout>
+
+
+                                <!--Costomar Name-->
+                                <StackLayout Margin="0,0,0,0" Spacing="0" VerticalOptions="Center">
+                                    <StackLayout Spacing="40" Margin="0,0,25,10" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                        <Label FontFamily="{StaticResource Regularfont}" Text="{Binding CostomarDital.BuildingNUM}"/>
+                                        <Label FontFamily="{StaticResource Regularfont}" Text="  رقم العمارة"/>
+                                    </StackLayout>
+                                    <BoxView Style="{StaticResource lineBoxView}"  Color="Black" Margin="25,0,25,0"/>
+                                </StackLayout>
+
+                                <!--Costomar Name-->
+                                <StackLayout Margin="0,0,0,0" Spacing="0" VerticalOptions="Center">
+                                    <StackLayout Spacing="40" Margin="0,0,25,10" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                        <Label FontFamily="{StaticResource Regularfont}" Text="{Binding CostomarDital.flatNum}"/>
+                                        <Label FontFamily="{StaticResource Regularfont}" Text=" رقم الشقة "/>
+                                    </StackLayout>
+                                    <BoxView Style="{StaticResource lineBoxView}"  Color="Black" Margin="25,0,25,0"/>
+                                </StackLayout>
+
+                                <!--Costomar Name-->
+                                <StackLayout Margin="0,0,0,0" Spacing="0" VerticalOptions="Center">
+                                    <StackLayout Spacing="40" Margin="0,0,25,10" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                        <Label FontFamily="{StaticResource Regularfont}" Text="{Binding CostomarDital.guarantorName}"/>
+                                        <Label FontFamily="{StaticResource Regularfont}" Text="أسم الضامن    "/>
+                                    </StackLayout>
+                                    <BoxView Style="{StaticResource lineBoxView}"  Color="Black" Margin="25,0,25,0"/>
+                                </StackLayout>
+
+                                <!--Costomar Name-->
+                                <StackLayout Margin="0,0,0,0" Spacing="0" VerticalOptions="Center">
+                                    <StackLayout Spacing="40" Margin="0,0,25,10" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                        <Label FontFamily="{StaticResource Regularfont}"  Text="{Binding CostomarDital.guarantorphone}"/>
+                                        <Label FontFamily="{StaticResource Regularfont}" Text="رقم الضامن      "/>
+                                    </StackLayout>
+                                    <BoxView Style="{StaticResource lineBoxView}"  Color="Black" Margin="25,0,25,0"/>
+                                </StackLayout>
+
+
+
+
+
+                            </StackLayout>
+                        </ScrollView>
+                    </StackLayout>
+
+
+                    <!--#endregion-->
+
+
+
+                </StackLayout>
+            </ScrollView>
+           
+            <!--#endregion-->
+
+            <!--#region Foter -->
+
+            <StackLayout VerticalOptions="Center"></StackLayout>
+            <StackLayout Spacing="10" VerticalOptions="EndAndExpand" Margin="0,0,0,17"  BackgroundColor="#fff">
+                <BoxView Style="{StaticResource lineBoxView}"   />
+                <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Fill" Padding="30,0" >
+
+                    <Button  Style="{StaticResource productsIconButton}"   Text="تعديل"  VerticalOptions="Center"  HeightRequest="40" HorizontalOptions="FillAndExpand" Command="{Binding Nav_To_UpdateCostomares_Command}" />
+
+                    <Label Style="{StaticResource WishlistIconLabel}" Text="{StaticResource phone}" WidthRequest="40">
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+
+            <!--#endregion-->
+
+        </StackLayout>
+        <!--#endregion-->
+    </ContentPage.Content>
+</ContentPage>

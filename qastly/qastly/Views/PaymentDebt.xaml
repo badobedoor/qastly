@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="qastly.Views.PaymentDebt"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:vm="clr-namespace:qastly.ViewModels"
+             xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource PageBackGroundColor}"
+             x:Name="Page">
+    <ContentPage.Content>
+        <!--Start general stacklayout-->
+        <StackLayout Spacing="0">
+
+            <!--Start background color-->
+            <StackLayout  BackgroundColor="{StaticResource PageBackGroundColor}"  Opacity=".97"/>
+            <!--End background color-->
+
+            <!--Start Content StackLayout-->
+            <StackLayout Spacing="0" >
+
+                <!--#region nav bar -->
+                <StackLayout Style="{StaticResource HeaderStackLayout}" Spacing="0" Padding="0" Margin="0,0,0,2">
+                    <Button Style="{StaticResource FA.solid.ButtonStyle}" Text="{StaticResource  Search}" HorizontalOptions="StartAndExpand"  FontSize="23" Margin="5,0,15,0"  Command="{Binding Nav_To_Search_Command}"/>
+                    <Label Style="{StaticResource Headerlable}" FontFamily="{StaticResource lightfont}" FontSize="22" Text="أرشيف الديون"  HorizontalOptions="End"  Margin="0,0,0,0"/>
+                    <Button Style="{StaticResource FA.solid.ButtonStyle}" Text="{StaticResource  arrowleft}" HorizontalOptions="End"  FontSize="23" Margin="0,0,10,0"  Command="{Binding Nav_To_Search_Command}" Rotation="180"/>
+                </StackLayout>
+                <!--#endregion-->
+
+
+
+                <!--#region list view -->
+                <border:SfBorder BorderColor="#DCD8D8" BorderWidth="1" HeightRequest="100"  Margin="10" CornerRadius="5" >
+                    <StackLayout Spacing="0" BackgroundColor="#fff" Padding="0,10,0,0">
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center"  Margin="0,0,17,0">
+
+                            <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="15,0,0,0">
+                                <Label Style="{StaticResource  Boldlable}" TextColor="Black" Text="$ 350" FontSize="22" VerticalOptions="Center"  FontFamily="{StaticResource lightfont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            </StackLayout>
+
+                            <StackLayout  Style="{StaticResource contanerStartStackLayout}"  VerticalOptions="Center" Margin="0,0,0,0" HorizontalOptions="End">
+                                <Label Style="{StaticResource  Boldlable}" TextColor="Black" Text="كريم" FontSize="22" VerticalOptions="Center" HorizontalOptions="End" FontFamily="{StaticResource lightfont}"/>
+                            </StackLayout>
+
+                        </StackLayout>
+
+
+                        <BoxView Style="{StaticResource lineBoxView}"  />
+
+                        <StackLayout   Orientation="Horizontal"  Spacing="0" Margin="0,5,0,0">
+                            <StackLayout VerticalOptions="Center" Orientation="Horizontal" HorizontalOptions="StartAndExpand" Padding="5" Spacing="0"  Margin="10,0,0,0" >
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                                    <Label Style="{StaticResource FA.solid.LabelStyle}" Text="{StaticResource DeleteIcon}" TextColor="#333030"   WidthRequest="25" FontSize="22"/>
+                                    <Label Style="{StaticResource Boldlable}" Text="حذف" TextColor="#333030" VerticalOptions="Center" />
+                                </StackLayout>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="End" Margin="0,2,15,0" Spacing="15">
+                                <Label Style="{StaticResource listViewPriceLabel}" Text="7/7/2020" TextColor="#5272C5" FontSize="20" HorizontalOptions="End"/>
+                            </StackLayout>
+                        </StackLayout>
+
+                    </StackLayout>
+
+
+                </border:SfBorder>
+                <ScrollView>
+                    <!--Start list view -->
+                    <syncfusion:SfListView x:Name="ac"  ItemSize="120"  ItemSpacing="0" >
+                        <syncfusion:SfListView.ItemTemplate  >
+                            <DataTemplate>
+                                <ViewCell >
+
+
+                                </ViewCell>
+                            </DataTemplate>
+                        </syncfusion:SfListView.ItemTemplate>
+                    </syncfusion:SfListView>
+                    <!--End list view -->
+
+                </ScrollView>
+
+                <!--#endregion-->
+
+                <!--#region Foter -->
+                <StackLayout VerticalOptions="Center"></StackLayout>
+                <StackLayout Spacing="10" VerticalOptions="EndAndExpand" Padding="0,0,0,10"  BackgroundColor="#fff">
+                    <BoxView Style="{StaticResource lineBoxView}"   />
+
+                    <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Center" >
+                        <Button  Style="{StaticResource productsIconButton}"   Text="المديونات" FontSize="15" CornerRadius="10" VerticalOptions="Center"  WidthRequest="170" HeightRequest="40" HorizontalOptions="Center" />
+                        <Button  Style="{StaticResource productsIconButton}"   Text="مسح كل الأرشيف"  FontSize="15"  VerticalOptions="Center"  CornerRadius="10" WidthRequest="170" HeightRequest="40" HorizontalOptions="Center" />
+                    </StackLayout>
+                </StackLayout>
+                <!--#endregion-->
+
+            </StackLayout>
+            <!--End Content StackLayout-->
+
+        </StackLayout>
+        <!--End general stacklayout-->
+    </ContentPage.Content>
+</ContentPage>
